@@ -12,7 +12,7 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import org.usfirst.frc.team6014.robot.commands.ExampleCommand;
+import org.usfirst.frc.team6014.robot.autonomous.ExampleCommand;
 import org.usfirst.frc.team6014.robot.subsystems.Arm;
 import org.usfirst.frc.team6014.robot.subsystems.Drive;
 import org.usfirst.frc.team6014.robot.subsystems.Perception;
@@ -26,14 +26,14 @@ import org.usfirst.frc.team6014.robot.subsystems.Ramp;
  * project.
  */
 public class Robot extends TimedRobot {
-	public static final Arm kArm = new Arm();
-	public static final Drive kDrive = new Drive();
-	public static final Perception kPerception = new Perception();
-	public static final Ramp kRamp = new Ramp();
-	public static OI m_oi;
+	public static final Arm arm = new Arm();
+	public static final Drive drive = new Drive();
+	public static final Perception perception = new Perception();
+	public static final Ramp ramp = new Ramp();
+	public static OI oi;
 
-	Command m_autonomousCommand;
-	SendableChooser<Command> m_chooser = new SendableChooser<>();
+	Command autonomousCommand;
+	SendableChooser<Command> chooser = new SendableChooser<>();
 
 	/**
 	 * This function is run when the robot is first started up and should be
@@ -41,9 +41,9 @@ public class Robot extends TimedRobot {
 	 */
 	@Override
 	public void robotInit() {
-		m_oi = new OI();
-		m_chooser.addDefault("Default Auto", new ExampleCommand());
-		SmartDashboard.putData("Auto mode", m_chooser);
+		oi = new OI();
+		chooser.addDefault("Default Auto", new ExampleCommand());
+		SmartDashboard.putData("Auto mode", chooser);
 	}
 
 	/**
@@ -74,7 +74,7 @@ public class Robot extends TimedRobot {
 	 */
 	@Override
 	public void autonomousInit() {
-		m_autonomousCommand = m_chooser.getSelected();
+		autonomousCommand = chooser.getSelected();
 
 		/*
 		 * String autoSelected = SmartDashboard.getString("Auto Selector",
@@ -84,8 +84,8 @@ public class Robot extends TimedRobot {
 		 */
 
 		// schedule the autonomous command (example)
-		if (m_autonomousCommand != null) {
-			m_autonomousCommand.start();
+		if (autonomousCommand != null) {
+			autonomousCommand.start();
 		}
 	}
 
@@ -103,8 +103,8 @@ public class Robot extends TimedRobot {
 		// teleop starts running. If you want the autonomous to
 		// continue until interrupted by another command, remove
 		// this line or comment it out.
-		if (m_autonomousCommand != null) {
-			m_autonomousCommand.cancel();
+		if (autonomousCommand != null) {
+			autonomousCommand.cancel();
 		}
 	}
 
@@ -113,6 +113,7 @@ public class Robot extends TimedRobot {
 	 */
 	@Override
 	public void teleopPeriodic() {
+		drive.arcadeDrive(-Robot.oi.getRawY(),Robot.oi.getRawX());
 		Scheduler.getInstance().run();
 	}
 
