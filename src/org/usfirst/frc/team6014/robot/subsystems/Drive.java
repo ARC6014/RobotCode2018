@@ -7,14 +7,10 @@
 
 package org.usfirst.frc.team6014.robot.subsystems;
 
-import org.usfirst.frc.team6014.robot.Robot;
 import org.usfirst.frc.team6014.robot.RobotMap;
-import org.usfirst.frc.team6014.robot.utility.SpeedControllerEnum;
 
-import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
-import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 
