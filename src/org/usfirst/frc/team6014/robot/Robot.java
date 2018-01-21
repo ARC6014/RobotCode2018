@@ -106,6 +106,7 @@ public class Robot extends TimedRobot {
 		if (autonomousCommand != null) {
 			autonomousCommand.cancel();
 		}
+		Teleop.init();
 	}
 
 	/**
@@ -113,7 +114,7 @@ public class Robot extends TimedRobot {
 	 */
 	@Override
 	public void teleopPeriodic() {
-		drive.arcadeDrive(-Robot.oi.getRawY(),Robot.oi.getRawX());
+		Teleop.periodic();
 		Scheduler.getInstance().run();
 	}
 
@@ -122,5 +123,8 @@ public class Robot extends TimedRobot {
 	 */
 	@Override
 	public void testPeriodic() {
+	}
+	@Override
+	public void robotPeriodic() {
 	}
 }
