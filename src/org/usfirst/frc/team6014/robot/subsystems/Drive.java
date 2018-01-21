@@ -9,6 +9,7 @@ package org.usfirst.frc.team6014.robot.subsystems;
 
 import org.usfirst.frc.team6014.robot.Robot;
 import org.usfirst.frc.team6014.robot.RobotMap;
+import org.usfirst.frc.team6014.robot.utility.SpeedControllerEnum;
 
 import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.SpeedController;
@@ -24,17 +25,17 @@ public class Drive extends Subsystem {
 	// Put methods for controlling this subsystem
 	// here. Call these from Commands.
 	
-	SpeedController frontLeft = new VictorSP(RobotMap.frontLeft);
-	SpeedController rearLeft = new VictorSP(RobotMap.rearLeft);
+	SpeedController frontLeft = RobotMap.frontLeftEnum.generate(RobotMap.frontLeft);
+	SpeedController rearLeft = RobotMap.rearLeftEnum.generate(RobotMap.rearLeft);
 	SpeedControllerGroup left = new SpeedControllerGroup(frontLeft,rearLeft);
-	SpeedController frontRight = new Spark(RobotMap.frontRight);
-	SpeedController rearRight = new VictorSP(RobotMap.rearRight);
+	SpeedController frontRight = RobotMap.frontRightEnum.generate(RobotMap.frontRight);
+	SpeedController rearRight = RobotMap.frontRightEnum.generate(RobotMap.rearRight);
 	SpeedControllerGroup right = new SpeedControllerGroup(frontRight,rearRight);
 	DifferentialDrive drive = new DifferentialDrive(left,right);
 	
 	@Override
 	public void initDefaultCommand() {
-		drive.setMaxOutput(0.7);
+		drive.setMaxOutput(0.5);
 	}
 	public void arcadeDrive(double speed, double rotation) {
 		drive.arcadeDrive(speed,rotation);
