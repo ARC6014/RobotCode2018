@@ -44,11 +44,14 @@ public class OI {
 	// button.whenReleased(new ExampleCommand());
 	XboxController xbox = new XboxController(0);
 	GenericHID.Hand directionStick = GenericHID.Hand.kRight;
-	
+	GenericHID.Hand controlStick = GenericHID.Hand.kLeft;
 	public double getRawX() {
 		return xbox.getX(directionStick);
 	}
 	public double getRawY() {
 		return xbox.getY(directionStick);
+	}
+	public double getRawOtherY() {
+		return xbox.getY(controlStick);
 	}
 }
