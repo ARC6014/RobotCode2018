@@ -7,15 +7,20 @@
 
 package org.usfirst.frc.team6014.robot.autonomous;
 
-import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.command.TimedCommand;
+
 import org.usfirst.frc.team6014.robot.Robot;
 
 /**
  * An example command.  You can replace me with your own command.
  */
-public class ExampleCommand extends Command {
-	public ExampleCommand() {
-		// Use requires() here to declare subsystem dependencies
+public class ExampleCommand extends TimedCommand {
+	
+	double y,x;
+	public ExampleCommand(double timeout,double y, double x) {
+		super(timeout);
+		this.y=y;
+		this.x=x;
 	}
 
 	// Called just before this Command runs the first time
@@ -26,22 +31,19 @@ public class ExampleCommand extends Command {
 	// Called repeatedly when this Command is scheduled to run
 	@Override
 	protected void execute() {
-	}
-
-	// Make this return true when this Command no longer needs to run execute()
-	@Override
-	protected boolean isFinished() {
-		return false;
+		Robot.drive.arcadeDrive(x,y);
 	}
 
 	// Called once after isFinished returns true
 	@Override
 	protected void end() {
+		Robot.drive.arcadeDrive(0, 0);
 	}
 
 	// Called when another command which requires one or more of the same
 	// subsystems is scheduled to run
 	@Override
 	protected void interrupted() {
+		Robot.drive.arcadeDrive(0, 0);
 	}
 }

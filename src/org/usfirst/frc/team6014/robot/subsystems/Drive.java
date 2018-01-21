@@ -31,9 +31,11 @@ public class Drive extends Subsystem {
 	
 	@Override
 	public void initDefaultCommand() {
-		drive.setMaxOutput(0.5);
 	}
 	public void arcadeDrive(double speed, double rotation) {
 		drive.arcadeDrive(speed,rotation);
+	}
+	public void setMaxOutput(double speed) {
+		drive.setMaxOutput(speed);
 	}
 }
