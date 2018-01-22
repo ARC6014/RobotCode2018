@@ -32,4 +32,15 @@ public class RobotMap {
 	public static SpeedControllerEnum rearRightEnum = SpeedControllerEnum.VICTORSP;
 	//Arm
 	//Ramp
+	public static int leftRamp = 4;
+	public static SpeedControllerEnum leftRampEnum = SpeedControllerEnum.VICTORSPX;
+	
+	public static int rightRamp = 5;
+	public static SpeedControllerEnum rightRampEnum = SpeedControllerEnum.VICTORSPX;
+	
+	public static int release = 6;
+	public static SpeedControllerEnum releaseEnum = SpeedControllerEnum.VICTORSPX;
+	/*
+	* arm kismini yaptiktan sonra 4,5,6 numaralarını kaydırırız.
+	*/
 }
