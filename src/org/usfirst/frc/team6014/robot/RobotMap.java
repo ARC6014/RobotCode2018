@@ -41,6 +41,6 @@ public class RobotMap {
 	public static int release = 6;
 	public static SpeedControllerEnum releaseEnum = SpeedControllerEnum.VICTORSPX;
 	/*
-	* arm kismini yaptiktan sonra 4,5,6 numaralarını kaydırırız.
+	* arm kısmını yaptıktan sonra 4,5,6 numaralarını kaydırırız.
 	*/
 }
