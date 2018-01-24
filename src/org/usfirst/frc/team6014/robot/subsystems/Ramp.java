@@ -7,6 +7,10 @@
 
 package org.usfirst.frc.team6014.robot.subsystems;
 
+import org.usfirst.frc.team6014.robot.RobotMap;
+
+import edu.wpi.first.wpilibj.SpeedController;
+import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**

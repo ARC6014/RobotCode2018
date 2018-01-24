@@ -28,7 +28,7 @@ public class RobotMap {
 	public static int rearLeft = 1;
 	public static SpeedControllerEnum rearLeftEnum = SpeedControllerEnum.VICTORSP;
 	
-	public static int frontRight = 0;
+	public static int frontRight = 1;
 	public static SpeedControllerEnum frontRightEnum = SpeedControllerEnum.TALONSRX;
 	
 	public static int rearRight = 3;
@@ -43,7 +43,6 @@ public class RobotMap {
 	
 	public static int release = 6;
 	public static SpeedControllerEnum releaseEnum = SpeedControllerEnum.VICTORSPX;
-	/*
-	* arm kısmını yaptıktan sonra 4,5,6 numaralarını kaydırırız.
-	*/
+	//Perception
+	public static int pigeon = 2;
 }

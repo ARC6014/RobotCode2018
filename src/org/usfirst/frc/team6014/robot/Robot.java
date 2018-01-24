@@ -130,5 +130,6 @@ public class Robot extends TimedRobot {
 	}
 	@Override
 	public void robotPeriodic() {
+		SmartDashboard.putNumber("Heading", perception.getHeading());
 	}
 }

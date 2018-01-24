@@ -45,6 +45,9 @@ public class OI {
 	XboxController xbox = new XboxController(0);
 	GenericHID.Hand directionStick = GenericHID.Hand.kRight;
 	GenericHID.Hand controlStick = GenericHID.Hand.kLeft;
+	boolean prevReverseButton = false;
+	double reverseFactor = 1.0;
+	
 	public double getRawX() {
 		return xbox.getX(directionStick);
 	}
@@ -53,5 +56,17 @@ public class OI {
 	}
 	public double getRawOtherY() {
 		return xbox.getY(controlStick);
+	}
+	
+	boolean getReverseButton() {
+		return xbox.getYButton();
+	}
+	public double getReverseFactor() {
+		boolean curReverseButton = getReverseButton();
+		if(curReverseButton && !prevReverseButton) {
+			reverseFactor*=-1.0;
+		}
+		prevReverseButton = curReverseButton;
+		return reverseFactor;
 	}
 }
