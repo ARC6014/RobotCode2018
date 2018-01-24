@@ -17,7 +17,10 @@ import org.usfirst.frc.team6014.robot.utility.SpeedControllerEnum;
  */
 
 public class RobotMap {
-	//PWM PORTS
+	/* Note that IDs for CAN and PWM controllers are separate.
+	 * CAN Types: VICTORSPX,TALONSRX
+	 * PWM Types: VICTORSP,SPARK,PWMVICTORSPX,PWMTALONSRX
+	 */
 	//Drive
 	public static int frontLeft = 0;
 	public static SpeedControllerEnum frontLeftEnum = SpeedControllerEnum.VICTORSP;
@@ -25,8 +28,8 @@ public class RobotMap {
 	public static int rearLeft = 1;
 	public static SpeedControllerEnum rearLeftEnum = SpeedControllerEnum.VICTORSP;
 	
-	public static int frontRight = 2;
-	public static SpeedControllerEnum frontRightEnum = SpeedControllerEnum.SPARK;
+	public static int frontRight = 0;
+	public static SpeedControllerEnum frontRightEnum = SpeedControllerEnum.TALONSRX;
 	
 	public static int rearRight = 3;
 	public static SpeedControllerEnum rearRightEnum = SpeedControllerEnum.VICTORSP;

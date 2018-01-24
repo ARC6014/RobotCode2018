@@ -5,7 +5,7 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package org.usfirst.frc.team6014.robot.autonomous;
+package org.usfirst.frc.team6014.robot.autonomous.commands;
 
 import edu.wpi.first.wpilibj.command.TimedCommand;
 
@@ -14,10 +14,10 @@ import org.usfirst.frc.team6014.robot.Robot;
 /**
  * An example command.  You can replace me with your own command.
  */
-public class ExampleCommand extends TimedCommand {
+public class TimedDrive extends TimedCommand {
 	
 	double y,x;
-	public ExampleCommand(double timeout,double y, double x) {
+	public TimedDrive(double timeout,double y, double x) {
 		super(timeout);
 		this.y=y;
 		this.x=x;
@@ -31,19 +31,17 @@ public class ExampleCommand extends TimedCommand {
 	// Called repeatedly when this Command is scheduled to run
 	@Override
 	protected void execute() {
-		Robot.drive.arcadeDrive(x,y);
+		Robot.drive.arcadeDrive(y,x);
 	}
 
 	// Called once after isFinished returns true
 	@Override
 	protected void end() {
-		Robot.drive.arcadeDrive(0, 0);
 	}
 
 	// Called when another command which requires one or more of the same
 	// subsystems is scheduled to run
 	@Override
 	protected void interrupted() {
-		Robot.drive.arcadeDrive(0, 0);
 	}
 }

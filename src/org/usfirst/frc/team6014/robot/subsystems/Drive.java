@@ -25,7 +25,7 @@ public class Drive extends Subsystem {
 	SpeedController rearLeft = RobotMap.rearLeftEnum.generate(RobotMap.rearLeft);
 	SpeedControllerGroup left = new SpeedControllerGroup(frontLeft,rearLeft);
 	SpeedController frontRight = RobotMap.frontRightEnum.generate(RobotMap.frontRight);
-	SpeedController rearRight = RobotMap.frontRightEnum.generate(RobotMap.rearRight);
+	SpeedController rearRight = RobotMap.rearRightEnum.generate(RobotMap.rearRight);
 	SpeedControllerGroup right = new SpeedControllerGroup(frontRight,rearRight);
 	DifferentialDrive drive = new DifferentialDrive(left,right);
 	
