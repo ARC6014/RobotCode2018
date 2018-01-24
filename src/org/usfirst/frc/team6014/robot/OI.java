@@ -43,19 +43,19 @@ public class OI {
 	// until it is finished as determined by it's isFinished method.
 	// button.whenReleased(new ExampleCommand());
 	XboxController xbox = new XboxController(0);
-	GenericHID.Hand directionStick = GenericHID.Hand.kRight;
-	GenericHID.Hand controlStick = GenericHID.Hand.kLeft;
+	GenericHID.Hand rightStick = GenericHID.Hand.kRight;
+	GenericHID.Hand leftStick = GenericHID.Hand.kLeft;
 	boolean prevReverseButton = false;
 	double reverseFactor = 1.0;
 	
 	public double getRawX() {
-		return xbox.getX(directionStick);
+		return xbox.getX(rightStick);
 	}
 	public double getRawY() {
-		return xbox.getY(directionStick);
+		return xbox.getY(rightStick);
 	}
 	public double getRawOtherY() {
-		return xbox.getY(controlStick);
+		return xbox.getY(leftStick);
 	}
 	
 	boolean getReverseButton() {
@@ -68,5 +68,12 @@ public class OI {
 		}
 		prevReverseButton = curReverseButton;
 		return reverseFactor;
+	}
+	
+	public double getLeftTrigger(){
+		return xbox.getTriggerAxis(leftStick);
+	}
+	public double getRightTrigger(){
+		return xbox.getTriggerAxis(rightStick);
 	}
 }
