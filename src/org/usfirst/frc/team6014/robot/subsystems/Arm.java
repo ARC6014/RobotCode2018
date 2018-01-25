@@ -15,6 +15,14 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 public class Arm extends Subsystem {
 	// Put methods for controlling this subsystem
 	// here. Call these from Commands.
+	
+	SpeedController leftHinge = RobotMap.leftHingeEnum.generate(RobotMap.leftHinge);
+	SpeedController rightHinge = RobotMap.rightHingeEnum.generate(RobotMap.rightHinge);	
+	SpeedControllerGroup hinge = new SpeedControllerGroup(leftHinge,rightHinge);
+	
+	SpeedController leftArm = RobotMap.leftArmEnum.generate(RobotMap.leftArm);
+	SpeedController rightArm = RobotMap.rightArmEnum.generate(RobotMap.rightArm);	
+	SpeedControllerGroup arm = new SpeedControllerGroup(leftArm,rightArm);
 
 	@Override
 	public void initDefaultCommand() {
