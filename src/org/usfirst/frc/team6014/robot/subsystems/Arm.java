@@ -32,7 +32,7 @@ public class Arm extends Subsystem {
 	double angularRange = 180;
 	boolean overrotated = false;
 	
-	if(!hingeEncoder.getStopped() && hingeEncoder.overrotated){
+	if(!hingeEncoder.getStopped() && hingeEncoder.overrotated()){
 		arm.set(0); //set speed to 0
 	}
 
