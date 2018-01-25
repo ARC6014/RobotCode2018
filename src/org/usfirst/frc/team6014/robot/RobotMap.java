@@ -34,14 +34,25 @@ public class RobotMap {
 	public static int rearRight = 3;
 	public static SpeedControllerEnum rearRightEnum = SpeedControllerEnum.VICTORSP;
 	//Arm
+	public static int leftHinge = 4;
+	public static SpeedControllerEnum leftHingeEnum = SpeedControllerEnum.VICTORSPX;
+	
+	public static int rightHinge = 5;
+	public static SpeedControllerEnum rightHingeEnum = SpeedControllerEnum.VICTORSPX;
+	
+	public static int leftArm = 6;
+	public static SpeedControllerEnum leftArmEnum = SpeedControllerEnum.VICTORSPX;	
+	
+	public static int rightArm = 7;
+	public static SpeedControllerEnum rightArmEnum = SpeedControllerEnum.VICTORSPX;		
 	//Ramp
-	public static int leftRamp = 4;
+	public static int leftRamp = 8;
 	public static SpeedControllerEnum leftRampEnum = SpeedControllerEnum.VICTORSPX;
 	
-	public static int rightRamp = 5;
+	public static int rightRamp = 9;
 	public static SpeedControllerEnum rightRampEnum = SpeedControllerEnum.VICTORSPX;
 	
-	public static int release = 6;
+	public static int release = 10;
 	public static SpeedControllerEnum releaseEnum = SpeedControllerEnum.VICTORSPX;
 	//Perception
 	public static int pigeon = 2;
