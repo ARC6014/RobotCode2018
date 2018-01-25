@@ -24,10 +24,23 @@ public class Arm extends Subsystem {
 	SpeedController rightArm = RobotMap.rightArmEnum.generate(RobotMap.rightArm);	
 	SpeedControllerGroup arm = new SpeedControllerGroup(leftArm,rightArm);
 	
-	double pulsesPerRevolution = 7.0;
-	double distancePerPulse = 2*Math.PI/pulsesPerRevolution;
-	leftHingeEncoder.setDistancePerPulse(distancePerPulse);
-
+	Encoder hingeEncoder = new Encoder(4, 5, false, Encoder.EncodingType.k4X);
+	hingeEncoder.reset();
+	
+	double countsPerRevolution = 497;
+	hingeEncoder.setMaxPeriod(0.1); //duruma göre ayarlanmalı
+	
+	if(!hingeEncoder.getStopped()){
+		int count = hingeEncoder.get();
+		if(count <= -countsPerRevolution/2 || count >= countsPerRevolution/2){
+			arm.stopMotor();
+		}
+			
+	}
+	
+	
+	
+	
 	@Override
 	public void initDefaultCommand() {
 		// Set the default command for a subsystem here.
