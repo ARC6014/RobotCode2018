@@ -23,6 +23,10 @@ public class Arm extends Subsystem {
 	SpeedController leftArm = RobotMap.leftArmEnum.generate(RobotMap.leftArm);
 	SpeedController rightArm = RobotMap.rightArmEnum.generate(RobotMap.rightArm);	
 	SpeedControllerGroup arm = new SpeedControllerGroup(leftArm,rightArm);
+	
+	double pulsesPerRevolution = 7.0;
+	double distancePerPulse = 2*Math.PI/pulsesPerRevolution;
+	leftHingeEncoder.setDistancePerPulse(distancePerPulse);
 
 	@Override
 	public void initDefaultCommand() {
