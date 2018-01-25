@@ -25,25 +25,28 @@ public class Arm extends Subsystem {
 	SpeedControllerGroup arm = new SpeedControllerGroup(leftArm,rightArm);
 	
 	Encoder hingeEncoder = new Encoder(4, 5, false, Encoder.EncodingType.k4X);
+	hingeEncoder.setMaxPeriod(0.1); //ayarlanabilir
 	hingeEncoder.reset();
 	
 	double countsPerRevolution = 497;
-	hingeEncoder.setMaxPeriod(0.1); //duruma göre ayarlanmalı
+	double angularRange = 180;
+	boolean overrotated = false;
 	
-	if(!hingeEncoder.getStopped()){
-		int count = hingeEncoder.get();
-		if(count <= -countsPerRevolution/2 || count >= countsPerRevolution/2){
-			arm.stopMotor();
-		}
-			
+	if(!hingeEncoder.getStopped() && hingeEncoder.overrotated){
+		arm.set(0); //set speed to 0
 	}
-	
-	
-	
-	
+
 	@Override
 	public void initDefaultCommand() {
 		// Set the default command for a subsystem here.
 		// setDefaultCommand(new MySpecialCommand());
+	}
+	
+	public static boolean overrotated(){
+		int count = hingeEncoder.get();
+		if(count <= 0 || count >= countsPerRevolution*angularRange/360){
+			return true;
+		}
+		return false;
 	}
 }
