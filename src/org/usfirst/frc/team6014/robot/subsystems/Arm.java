@@ -8,7 +8,6 @@
 package org.usfirst.frc.team6014.robot.subsystems;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
-import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 
 /**
  * A subsystem for controlling the arm and its components.
@@ -23,7 +22,7 @@ public class Arm extends Subsystem {
 	
 	SpeedController leftArm = RobotMap.leftArmEnum.generate(RobotMap.leftArm);
 	SpeedController rightArm = RobotMap.rightArmEnum.generate(RobotMap.rightArm);	
-	DifferentialDrive arm = new DifferentialDrive(leftArm,rightArm);
+	SpeedControllerGroup arm = new SpeedControllerGroup(leftArm,rightArm);
 	
 	Encoder hingeEncoder = new Encoder(4, 5, false, Encoder.EncodingType.k4X);
 	//hingeEncoder.reset();
@@ -37,11 +36,11 @@ public class Arm extends Subsystem {
 		// setDefaultCommand(new MySpecialCommand());
 	}
 	
-	public void arcadeDrive(double speed, double rotation) {
-		if(arm.overrotated()){
-			arm.arcadeDrive(0,0);
+	public void set(double speed) {
+		if(overrotated()){
+			arm.set(0);
 		}else{
-			arm.arcadeDrive(speed,rotation);
+			arm.set(speed);
 		}
 	}
 	
