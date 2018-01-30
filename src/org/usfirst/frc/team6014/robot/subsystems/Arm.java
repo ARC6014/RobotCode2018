@@ -34,7 +34,6 @@ public class Arm extends Subsystem {
 	
 	static double countsPerRevolution = 497;
 	static double angularRange = 180;
-	double deneme = 0;
 
 	@Override
 	public void initDefaultCommand() {
