@@ -17,7 +17,7 @@ import org.usfirst.frc.team6014.robot.utility.SpeedControllerEnum;
  */
 
 public class RobotMap {
-	/* Note that IDs for CAN and PWM controllers are separate.
+	/* Note that IDs for CAN and PWM controllers are separate. And there are also DIOs.
 	 * CAN Types: VICTORSPX,TALONSRX
 	 * PWM Types: VICTORSP,SPARK,PWMVICTORSPX,PWMTALONSRX
 	 */
@@ -40,11 +40,14 @@ public class RobotMap {
 	public static int rightHinge = 5;
 	public static SpeedControllerEnum rightHingeEnum = SpeedControllerEnum.VICTORSPX;
 	
-	public static int leftArm = 6;
-	public static SpeedControllerEnum leftArmEnum = SpeedControllerEnum.VICTORSPX;	
+	public static int leftHolder = 6;
+	public static SpeedControllerEnum leftHolderEnum = SpeedControllerEnum.VICTORSPX;
 	
-	public static int rightArm = 7;
-	public static SpeedControllerEnum rightArmEnum = SpeedControllerEnum.VICTORSPX;		
+	public static int rightHolder = 7;
+	public static SpeedControllerEnum rightHolderEnum = SpeedControllerEnum.VICTORSPX;
+	
+	public static int encoderA = 0;//DIO
+	public static int encoderB = 1;//DIO
 	//Ramp
 	public static int leftRamp = 8;
 	public static SpeedControllerEnum leftRampEnum = SpeedControllerEnum.VICTORSPX;
@@ -55,5 +58,5 @@ public class RobotMap {
 	public static int release = 10;
 	public static SpeedControllerEnum releaseEnum = SpeedControllerEnum.VICTORSPX;
 	//Perception
-	public static int pigeon = 2;
+	public static int pigeon = 2;//CAN
 }

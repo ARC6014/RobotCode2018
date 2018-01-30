@@ -22,18 +22,17 @@ public class Arm extends Subsystem {
 	// here. Call these from Commands.
 	
 	SpeedController leftHinge = RobotMap.leftHingeEnum.generate(RobotMap.leftHinge);
-	SpeedController rightHinge = RobotMap.rightHingeEnum.generate(RobotMap.rightHinge);	
+	SpeedController rightHinge = RobotMap.rightHingeEnum.generate(RobotMap.rightHinge);
 	SpeedControllerGroup hinge = new SpeedControllerGroup(leftHinge,rightHinge);
 	
-	SpeedController leftArm = RobotMap.leftArmEnum.generate(RobotMap.leftArm);
-	SpeedController rightArm = RobotMap.rightArmEnum.generate(RobotMap.rightArm);	
-	SpeedControllerGroup arm = new SpeedControllerGroup(leftArm,rightArm);
+	SpeedController leftHolder = RobotMap.leftHolderEnum.generate(RobotMap.leftHolder);
+	SpeedController rightHolder = RobotMap.rightHolderEnum.generate(RobotMap.rightHolder);	
+	SpeedControllerGroup arm = new SpeedControllerGroup(leftHolder,rightHolder);
 	
-	static Encoder hingeEncoder = new Encoder(4, 5, false, Encoder.EncodingType.k4X);
-	//hingeEncoder.reset();
+	Encoder hingeEncoder = new Encoder(RobotMap.encoderA, RobotMap.encoderB, false, Encoder.EncodingType.k4X);
 	
 	static double countsPerRevolution = 497;
-	static double angularRange = 180;
+	static double angularRange = 90;
 
 	@Override
 	public void initDefaultCommand() {
@@ -41,15 +40,15 @@ public class Arm extends Subsystem {
 		// setDefaultCommand(new MySpecialCommand());
 	}
 	
-	public void set(double speed) {
-		if(overrotated()){
-			arm.set(0);
+	public void setHingeSpeed(double speed) {
+		if(overRotated()){
+			hinge.set(0);
 		}else{
-			arm.set(speed);
+			hinge.set(speed);
 		}
 	}
 	
-	public static boolean overrotated(){
+	public boolean overRotated(){
 		int count = hingeEncoder.get();
 		if(count <= 0 || count >= countsPerRevolution*angularRange/360){
 			return true;
