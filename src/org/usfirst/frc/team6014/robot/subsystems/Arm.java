@@ -7,6 +7,11 @@
 
 package org.usfirst.frc.team6014.robot.subsystems;
 
+import org.usfirst.frc.team6014.robot.RobotMap;
+
+import edu.wpi.first.wpilibj.Encoder;
+import edu.wpi.first.wpilibj.SpeedController;
+import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
@@ -24,11 +29,12 @@ public class Arm extends Subsystem {
 	SpeedController rightArm = RobotMap.rightArmEnum.generate(RobotMap.rightArm);	
 	SpeedControllerGroup arm = new SpeedControllerGroup(leftArm,rightArm);
 	
-	Encoder hingeEncoder = new Encoder(4, 5, false, Encoder.EncodingType.k4X);
+	static Encoder hingeEncoder = new Encoder(4, 5, false, Encoder.EncodingType.k4X);
 	//hingeEncoder.reset();
 	
-	double countsPerRevolution = 497;
-	double angularRange = 180;
+	static double countsPerRevolution = 497;
+	static double angularRange = 180;
+	double deneme = 0;
 
 	@Override
 	public void initDefaultCommand() {
