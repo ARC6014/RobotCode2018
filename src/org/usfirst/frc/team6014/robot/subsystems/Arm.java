@@ -31,26 +31,34 @@ public class Arm extends Subsystem {
 	
 	Encoder hingeEncoder = new Encoder(RobotMap.encoderA, RobotMap.encoderB, false, Encoder.EncodingType.k4X);
 	
-	static double countsPerRevolution = 497;
-	static double angularRange = 90;
+	double countsPerRevolution = 497;
+	double angularRange = 90;
 
 	@Override
 	public void initDefaultCommand() {
-		// Set the default command for a subsystem here.
-		// setDefaultCommand(new MySpecialCommand());
+		hingeEncoder.reset();
 	}
 	
 	public void setHingeSpeed(double speed) {
 		if(overRotated()){
-			hinge.set(0);
-		}else{
+			hinge.set(-speed);
+		} else {
 			hinge.set(speed);
 		}
 	}
 	
-	public boolean overRotated(){
+	public void resetHingeEncoder() {
+		hingeEncoder.reset();
+	}
+	
+	public double getCurrentAngle() {
 		int count = hingeEncoder.get();
-		if(count <= 0 || count >= countsPerRevolution*angularRange/360){
+		return count*360/countsPerRevolution;
+	}
+	
+	public boolean overRotated(){
+		double angle = getCurrentAngle();
+		if((angle<=0 && !hingeEncoder.getDirection()) || (angle>=angularRange && hingeEncoder.getDirection())){
 			return true;
 		}
 		return false;
