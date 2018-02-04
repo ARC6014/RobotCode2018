@@ -8,5 +8,14 @@ public class Teleop {
 		Robot.drive.arcadeDrive(-Robot.oi.getRawY()*Robot.oi.getReverseFactor(),Robot.oi.getRawX());
 		Robot.drive.setMaxOutput((-Robot.oi.getRawOtherY()+1)/2);
 		Robot.arm.setHingeSpeed(Robot.oi.getLeftTrigger() - Robot.oi.getRightTrigger());
+		if(Robot.oi.getLaunchButton()) {
+			Robot.arm.setHolderSpeed(-1);
+		} else if(Robot.oi.getIntakeButton()) {
+			Robot.arm.setHolderSpeed(1);
+		} else {
+			Robot.arm.setHolderSpeed(0);
+		}
 	}
 }
+
+

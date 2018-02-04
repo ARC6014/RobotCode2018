@@ -23,11 +23,11 @@ public class Arm extends Subsystem {
 	
 	SpeedController leftHinge = RobotMap.leftHingeEnum.generate(RobotMap.leftHinge);
 	SpeedController rightHinge = RobotMap.rightHingeEnum.generate(RobotMap.rightHinge);
-	SpeedControllerGroup hinge = new SpeedControllerGroup(leftHinge,rightHinge);
+	SpeedControllerGroup hinge;
 	
 	SpeedController leftHolder = RobotMap.leftHolderEnum.generate(RobotMap.leftHolder);
 	SpeedController rightHolder = RobotMap.rightHolderEnum.generate(RobotMap.rightHolder);	
-	SpeedControllerGroup arm = new SpeedControllerGroup(leftHolder,rightHolder);
+	SpeedControllerGroup holder;
 	
 	Encoder hingeEncoder = new Encoder(RobotMap.encoderA, RobotMap.encoderB, false, Encoder.EncodingType.k4X);
 	
@@ -37,6 +37,14 @@ public class Arm extends Subsystem {
 	@Override
 	public void initDefaultCommand() {
 		hingeEncoder.reset();
+		rightHinge.setInverted(true);
+		rightHolder.setInverted(true);
+		hinge = new SpeedControllerGroup(leftHinge,rightHinge);
+		holder = new SpeedControllerGroup(leftHolder,rightHolder);
+	}
+	
+	public void setHolderSpeed(double speed) {
+		holder.set(speed);
 	}
 	
 	public void setHingeSpeed(double speed) {
