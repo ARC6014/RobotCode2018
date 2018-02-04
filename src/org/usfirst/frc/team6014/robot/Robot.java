@@ -13,11 +13,14 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+
+import org.usfirst.frc.team6014.robot.autonomous.commandgroups.AutoStraightTest;
 import org.usfirst.frc.team6014.robot.autonomous.commandgroups.AutoTest;
 import org.usfirst.frc.team6014.robot.autonomous.commandgroups.AutoTest2;
 import org.usfirst.frc.team6014.robot.subsystems.Arm;
 import org.usfirst.frc.team6014.robot.subsystems.Drive;
 import org.usfirst.frc.team6014.robot.subsystems.Perception;
+import org.usfirst.frc.team6014.robot.subsystems.PigeonController;
 import org.usfirst.frc.team6014.robot.subsystems.Ramp;
 
 /**
@@ -31,6 +34,7 @@ public class Robot extends TimedRobot {
 	public static final Arm arm = new Arm();
 	public static final Drive drive = new Drive();
 	public static final Perception perception = new Perception();
+	public static final PigeonController pigeonController = new PigeonController();
 	public static final Ramp ramp = new Ramp();
 	public static OI oi;
 
@@ -46,6 +50,7 @@ public class Robot extends TimedRobot {
 		oi = new OI();
 		chooser.addDefault("Test 1", new AutoTest());
 		chooser.addObject("Test 2", new AutoTest2());
+		chooser.addObject("Straight Drive Test", new AutoStraightTest());
 		SmartDashboard.putData("Auto mode", chooser);
 		CameraServer.getInstance().startAutomaticCapture();
 	}
@@ -130,6 +135,6 @@ public class Robot extends TimedRobot {
 	}
 	@Override
 	public void robotPeriodic() {
-		SmartDashboard.putNumber("Heading", perception.getHeading());
+		SmartDashboard.putNumber("Heading", pigeonController.getHeading());
 	}
 }
