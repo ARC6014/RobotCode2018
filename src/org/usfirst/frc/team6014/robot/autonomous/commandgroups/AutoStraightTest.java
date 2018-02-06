@@ -16,6 +16,6 @@ import org.usfirst.frc.team6014.robot.autonomous.commands.TimedStraightDrive;
  */
 public class AutoStraightTest extends CommandGroup {
 	public AutoStraightTest() {
-		addSequential(new TimedStraightDrive(4.0, 0.5));
+		addSequential(new TimedStraightDrive(5.0, 0.6));
 	}
 }

@@ -31,7 +31,6 @@ import org.usfirst.frc.team6014.robot.subsystems.Ramp;
  * project.
  */
 public class Robot extends TimedRobot {
-	public static final Arm arm = new Arm();
 	public static final Drive drive = new Drive();
 	public static final Perception perception = new Perception();
 	public static final PigeonController pigeonController = new PigeonController();
@@ -48,9 +47,9 @@ public class Robot extends TimedRobot {
 	@Override
 	public void robotInit() {
 		oi = new OI();
-		chooser.addDefault("Test 1", new AutoTest());
+		chooser.addDefault("Straight Drive Test", new AutoStraightTest());
+		chooser.addObject("Test 1", new AutoTest());
 		chooser.addObject("Test 2", new AutoTest2());
-		chooser.addObject("Straight Drive Test", new AutoStraightTest());
 		SmartDashboard.putData("Auto mode", chooser);
 		CameraServer.getInstance().startAutomaticCapture();
 	}

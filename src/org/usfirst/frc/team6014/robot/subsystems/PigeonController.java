@@ -17,12 +17,12 @@ import com.ctre.phoenix.sensors.PigeonIMU;
 /**
  * A subsystem for sensors and vision processing.
  */
-public class PigeonController extends PIDSubsystem{
+public class PigeonController extends PIDSubsystem {
 	
 	PigeonIMU pigeon = new PigeonIMU(RobotMap.pigeon);
 	private double outPID = 0;
 	public PigeonController() {
-		super(0, 0, 0);
+		super(0.3, 0, 0);
 		setAbsoluteTolerance(3);
         getPIDController().setContinuous(false);
 		// TODO Auto-generated constructor stub
@@ -39,14 +39,14 @@ public class PigeonController extends PIDSubsystem{
 		// setDefaultCommand(new MySpecialCommand());
 		pigeon.setFusedHeading(0.0, 10);
 	}
-
+	
 	public double[] getRawGyro() {
 		double[] results = new double[3];
 		pigeon.getRawGyro(results);
 		return results;
 	}
 	public double getHeading() {
-		return pigeon.getFusedHeading();
+		return pigeon.getFusedHeading() % 360;
 	}
 	@Override
 	protected double returnPIDInput() {
@@ -59,13 +59,14 @@ public class PigeonController extends PIDSubsystem{
 		this.outPID = output;
 	}
 	public void driveStraight(double speed) {
-		Robot.drive.arcadeDrive(speed, outPID);
+		Robot.drive.arcadeDrive(speed, -outPID);
 	}
 	public void rotateToAngle() {
 		while(this.onTarget()) {
-			Robot.drive.arcadeDrive(0, outPID);
+			Robot.drive.arcadeDrive(0, -outPID);
 		}
 	}
+	
 	
 	
 	
