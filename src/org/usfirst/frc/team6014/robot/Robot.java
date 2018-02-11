@@ -31,8 +31,10 @@ public class Robot extends TimedRobot {
 	public static final Arm arm = new Arm();
 	public static final Drive drive = new Drive();
 	public static final Perception perception = new Perception();
-	public static final Ramp ramp = new Ramp();
+	//public static final Ramp ramp = new Ramp();
 	public static OI oi;
+	
+	private double heading,angle;
 
 	Command autonomousCommand;
 	SendableChooser<Command> chooser = new SendableChooser<>();
@@ -47,7 +49,9 @@ public class Robot extends TimedRobot {
 		chooser.addDefault("Test 1", new AutoTest());
 		chooser.addObject("Test 2", new AutoTest2());
 		SmartDashboard.putData("Auto mode", chooser);
-		CameraServer.getInstance().startAutomaticCapture();
+		SmartDashboard.putNumber("Heading", heading);
+		SmartDashboard.putNumber("Arm Angle", angle);
+		//CameraServer.getInstance().startAutomaticCapture();
 	}
 
 	/**
@@ -130,6 +134,7 @@ public class Robot extends TimedRobot {
 	}
 	@Override
 	public void robotPeriodic() {
-		SmartDashboard.putNumber("Heading", perception.getHeading());
+		heading = perception.getHeading();
+		angle = arm.getCurrentAngle();
 	}
 }

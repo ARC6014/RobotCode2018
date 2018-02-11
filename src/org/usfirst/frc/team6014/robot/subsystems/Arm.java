@@ -18,9 +18,6 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  * A subsystem for controlling the arm and its components.
  */
 public class Arm extends Subsystem {
-	// Put methods for controlling this subsystem
-	// here. Call these from Commands.
-	
 	SpeedController leftHinge = RobotMap.leftHingeEnum.generate(RobotMap.leftHinge);
 	SpeedController rightHinge = RobotMap.rightHingeEnum.generate(RobotMap.rightHinge);
 	SpeedControllerGroup hinge;
@@ -32,10 +29,9 @@ public class Arm extends Subsystem {
 	Encoder hingeEncoder = new Encoder(RobotMap.encoderA, RobotMap.encoderB, false, Encoder.EncodingType.k4X);
 	
 	double countsPerRevolution = 497;
-	double angularRange = 90;
+	double angularRange = 160;
 
-	@Override
-	public void initDefaultCommand() {
+	public Arm() {
 		hingeEncoder.reset();
 		rightHinge.setInverted(true);
 		rightHolder.setInverted(true);
@@ -43,13 +39,17 @@ public class Arm extends Subsystem {
 		holder = new SpeedControllerGroup(leftHolder,rightHolder);
 	}
 	
+	@Override
+	public void initDefaultCommand() {
+	}
+	
 	public void setHolderSpeed(double speed) {
 		holder.set(speed);
 	}
 	
 	public void setHingeSpeed(double speed) {
-		if(overRotated()){
-			hinge.set(-speed);
+		if(overRotated(speed>0)){
+			hinge.set(0);
 		} else {
 			hinge.set(speed);
 		}
@@ -64,9 +64,9 @@ public class Arm extends Subsystem {
 		return count*360/countsPerRevolution;
 	}
 	
-	public boolean overRotated(){
+	public boolean overRotated(boolean dir){
 		double angle = getCurrentAngle();
-		if((angle<=0 && !hingeEncoder.getDirection()) || (angle>=angularRange && hingeEncoder.getDirection())){
+		if((angle<=0 && !dir) || (angle>=angularRange && dir)){
 			return true;
 		}
 		return false;

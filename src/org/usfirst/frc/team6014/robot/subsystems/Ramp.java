@@ -17,17 +17,17 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  * A subsystem for controlling the ramp/lifters of the robot.
  */
 public class Ramp extends Subsystem {
-	// Put methods for controlling this subsystem
-	// here. Call these from Commands.
-	
 	SpeedController leftRamp = RobotMap.leftRampEnum.generate(RobotMap.leftRamp);
 	SpeedController rightRamp = RobotMap.rightRampEnum.generate(RobotMap.rightRamp);
 	SpeedController release = RobotMap.releaseEnum.generate(RobotMap.release);	
-	SpeedControllerGroup ramp = new SpeedControllerGroup(leftRamp,rightRamp);
-
+	SpeedControllerGroup ramp;
+	
+	public Ramp() {
+		rightRamp.setInverted(true);
+		ramp = new SpeedControllerGroup(leftRamp,rightRamp);
+	}
+	
 	@Override
 	public void initDefaultCommand() {
-		// Set the default command for a subsystem here.
-		// setDefaultCommand(new MySpecialCommand());
 	}
 }

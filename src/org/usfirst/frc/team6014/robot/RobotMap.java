@@ -20,6 +20,7 @@ public class RobotMap {
 	/* Note that IDs for CAN and PWM controllers are separate. And there are also DIOs.
 	 * CAN Types: VICTORSPX,TALONSRX
 	 * PWM Types: VICTORSP,SPARK,PWMVICTORSPX,PWMTALONSRX
+	 * Other types are explained case-by-case.
 	 */
 	//Drive
 	public static int frontLeft = 0;
@@ -34,17 +35,17 @@ public class RobotMap {
 	public static int rearRight = 3;
 	public static SpeedControllerEnum rearRightEnum = SpeedControllerEnum.VICTORSP;
 	//Arm
-	public static int leftHinge = 4;
-	public static SpeedControllerEnum leftHingeEnum = SpeedControllerEnum.VICTORSPX;
+	public static int leftHinge = 6;
+	public static SpeedControllerEnum leftHingeEnum = SpeedControllerEnum.PWMVICTORSPX;
 	
 	public static int rightHinge = 5;
-	public static SpeedControllerEnum rightHingeEnum = SpeedControllerEnum.VICTORSPX;
+	public static SpeedControllerEnum rightHingeEnum = SpeedControllerEnum.PWMVICTORSPX;
 	
-	public static int leftHolder = 6;
-	public static SpeedControllerEnum leftHolderEnum = SpeedControllerEnum.VICTORSPX;
+	public static int leftHolder = 4;
+	public static SpeedControllerEnum leftHolderEnum = SpeedControllerEnum.PWMVICTORSPX;
 	
-	public static int rightHolder = 7;
-	public static SpeedControllerEnum rightHolderEnum = SpeedControllerEnum.VICTORSPX;
+	public static int rightHolder = 2;
+	public static SpeedControllerEnum rightHolderEnum = SpeedControllerEnum.PWMVICTORSPX;
 	
 	public static int encoderA = 0;//DIO
 	public static int encoderB = 1;//DIO

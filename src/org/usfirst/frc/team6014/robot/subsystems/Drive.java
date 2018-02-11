@@ -18,9 +18,6 @@ import edu.wpi.first.wpilibj.drive.DifferentialDrive;
  * A subsystem for the control of the drivetrain.
  */
 public class Drive extends Subsystem {
-	// Put methods for controlling this subsystem
-	// here. Call these from Commands.
-	
 	SpeedController frontLeft = RobotMap.frontLeftEnum.generate(RobotMap.frontLeft);
 	SpeedController rearLeft = RobotMap.rearLeftEnum.generate(RobotMap.rearLeft);
 	SpeedControllerGroup left = new SpeedControllerGroup(frontLeft,rearLeft);
@@ -28,6 +25,9 @@ public class Drive extends Subsystem {
 	SpeedController rearRight = RobotMap.rearRightEnum.generate(RobotMap.rearRight);
 	SpeedControllerGroup right = new SpeedControllerGroup(frontRight,rearRight);
 	DifferentialDrive drive = new DifferentialDrive(left,right);
+	
+	public Drive() {
+	}
 	
 	@Override
 	public void initDefaultCommand() {

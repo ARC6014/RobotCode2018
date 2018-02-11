@@ -17,15 +17,13 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  * A subsystem for sensors and vision processing.
  */
 public class Perception extends Subsystem {
-	// Put methods for controlling this subsystem
-	// here. Call these from Commands.
-
 	PigeonIMU pigeon = new PigeonIMU(RobotMap.pigeon);
+	
+	public Perception() {
+	}
 	
 	@Override
 	public void initDefaultCommand() {
-		// Set the default command for a subsystem here.
-		// setDefaultCommand(new MySpecialCommand());
 	}
 	public double getHeading() {
 		return pigeon.getFusedHeading();
