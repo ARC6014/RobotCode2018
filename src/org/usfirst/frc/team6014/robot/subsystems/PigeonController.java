@@ -46,14 +46,17 @@ public class PigeonController extends PIDSubsystem {
 	}
 	@Override
 	protected double returnPIDInput() {
-		return pigeon.getFusedHeading();
+		if((pigeon.getFusedHeading() - this.getSetpoint()) % 360 > 180) {
+			return (pigeon.getFusedHeading() % 360) - 360;
+		}
+		return pigeon.getFusedHeading() % 360;
 	}
 	@Override
 	protected void usePIDOutput(double output) {
 		this.outPID = output;
 	}
 	public void pidDrive(double speed) {
-		Robot.drive.arcadeDrive(speed, -outPID);
-		System.out.println(outPID);
+			Robot.drive.arcadeDrive(speed, -outPID);
+			System.out.println(outPID);
 	}
 }
