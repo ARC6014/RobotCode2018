@@ -27,6 +27,7 @@ public class Drive extends Subsystem {
 	DifferentialDrive drive = new DifferentialDrive(left,right);
 	
 	public Drive() {
+		this.setMaxOutput(0.5);
 	}
 	
 	@Override

@@ -19,6 +19,5 @@ public class AutoTest extends CommandGroup {
 		addSequential(new TimedDrive(7,0.5,0));
 		addSequential(new TimedDrive(3.5,0,-0.5));
 		addSequential(new TimedDrive(5,0.5,0));
-		addSequential(new TimedDrive(3600,0,0));
 	}
 }

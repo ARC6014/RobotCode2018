@@ -17,7 +17,7 @@ import org.usfirst.frc.team6014.robot.Robot;
 public class TimedDrive extends TimedCommand {
 	
 	double y,x;
-	public TimedDrive(double timeout,double y, double x) {
+	public TimedDrive(double timeout, double y, double x) {
 		super(timeout);
 		this.y=y;
 		this.x=x;

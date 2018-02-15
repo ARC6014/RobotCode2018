@@ -29,7 +29,7 @@ public class Arm extends Subsystem {
 	Encoder hingeEncoder = new Encoder(RobotMap.encoderA, RobotMap.encoderB, false, Encoder.EncodingType.k4X);
 	
 	double countsPerRevolution = 497;
-	double angularRange = 160;
+	double angularRange = 157;
 
 	public Arm() {
 		hingeEncoder.reset();

@@ -7,17 +7,21 @@
 
 package org.usfirst.frc.team6014.robot;
 
+import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+
+import org.usfirst.frc.team6014.robot.autonomous.commandgroups.AutoStraightTest;
 import org.usfirst.frc.team6014.robot.autonomous.commandgroups.AutoTest;
 import org.usfirst.frc.team6014.robot.autonomous.commandgroups.AutoTest2;
 import org.usfirst.frc.team6014.robot.subsystems.Arm;
 import org.usfirst.frc.team6014.robot.subsystems.Drive;
 import org.usfirst.frc.team6014.robot.subsystems.Perception;
+import org.usfirst.frc.team6014.robot.subsystems.PigeonController;
 import org.usfirst.frc.team6014.robot.subsystems.Ramp;
 
 /**
@@ -28,10 +32,11 @@ import org.usfirst.frc.team6014.robot.subsystems.Ramp;
  * project.
  */
 public class Robot extends TimedRobot {
-	public static final Arm arm = new Arm();
 	public static final Drive drive = new Drive();
-	public static final Perception perception = new Perception();
+	public static final Arm arm = new Arm();
 	//public static final Ramp ramp = new Ramp();
+	public static final Perception perception = new Perception();
+	public static final PigeonController pigeonController = new PigeonController();
 	public static OI oi;
 	
 	private double heading,angle;
@@ -46,7 +51,8 @@ public class Robot extends TimedRobot {
 	@Override
 	public void robotInit() {
 		oi = new OI();
-		chooser.addDefault("Test 1", new AutoTest());
+		chooser.addDefault("Straight Drive Test", new AutoStraightTest());
+		chooser.addObject("Test 1", new AutoTest());
 		chooser.addObject("Test 2", new AutoTest2());
 		SmartDashboard.putData("Auto mode", chooser);
 		SmartDashboard.putNumber("Heading", heading);
@@ -83,15 +89,6 @@ public class Robot extends TimedRobot {
 	@Override
 	public void autonomousInit() {
 		autonomousCommand = chooser.getSelected();
-
-		/*
-		 * String autoSelected = SmartDashboard.getString("Auto Selector",
-		 * "Default"); switch(autoSelected) { case "My Auto": autonomousCommand
-		 * = new MyAutoCommand(); break; case "Default Auto": default:
-		 * autonomousCommand = new ExampleCommand(); break; }
-		 */
-
-		// schedule the autonomous command (example)
 		if (autonomousCommand != null) {
 			autonomousCommand.start();
 		}
@@ -134,7 +131,6 @@ public class Robot extends TimedRobot {
 	}
 	@Override
 	public void robotPeriodic() {
-		heading = perception.getHeading();
-		angle = arm.getCurrentAngle();
+		SmartDashboard.putNumber("Heading", pigeonController.getHeading());
 	}
 }

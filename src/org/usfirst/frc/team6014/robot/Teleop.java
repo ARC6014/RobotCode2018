@@ -6,7 +6,7 @@ public class Teleop {
 	}
 	public static void periodic() {
 		Robot.drive.arcadeDrive(-Robot.oi.getRawY()*Robot.oi.getReverseFactor(),Robot.oi.getRawX());
-		Robot.drive.setMaxOutput(0.5/*(-Robot.oi.getRawOtherY()+1)/2*/);
+		//Robot.drive.setMaxOutput((-Robot.oi.getRawOtherY()+1)/2);
 		Robot.arm.setHingeSpeed(-Robot.oi.getRawOtherY());
 		if(Robot.oi.getLaunchButton()) {
 			Robot.arm.setHolderSpeed(1.0);
@@ -15,5 +15,7 @@ public class Teleop {
 		} else {
 			Robot.arm.setHolderSpeed(0);
 		}
+		Robot.drive.setMaxOutput((-Robot.oi.getRawOtherY()+1)/2);
+		//Robot.arm.setHingeSpeed(Robot.oi.getLeftTrigger() - Robot.oi.getRightTrigger());
 	}
 }
