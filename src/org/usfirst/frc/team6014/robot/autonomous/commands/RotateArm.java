@@ -11,32 +11,31 @@ import edu.wpi.first.wpilibj.command.Command;
 
 import org.usfirst.frc.team6014.robot.Robot;
 
-public class TurnToAngle extends Command {
+public class RotateArm extends Command {
 	
 	private double angle;
 	
-	public TurnToAngle(double angle) {
-		requires(Robot.pigeonController);
-		requires(Robot.drive);
+	public RotateArm(double angle) {
+		requires(Robot.arm);
 		this.angle = angle;
 	}
 
 	// Called just before this Command runs the first time
 	@Override
 	protected void initialize() {
-		Robot.pigeonController.setAngle(angle);
-		Robot.pigeonController.enable();
+		Robot.arm.setAngle(angle);
+		Robot.arm.enable();
 	}
 
 	// Called repeatedly when this Command is scheduled to run
 	@Override
 	protected void execute() {
-		Robot.pigeonController.pidDrive(0);
+		Robot.arm.hingePID();
 	}
 	
 	@Override
 	protected boolean isFinished() {
-		return false;
+		return false;//Robot.arm.onTarget();
 	}
 
 }

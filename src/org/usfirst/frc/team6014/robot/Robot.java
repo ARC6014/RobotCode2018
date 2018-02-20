@@ -132,5 +132,6 @@ public class Robot extends TimedRobot {
 	@Override
 	public void robotPeriodic() {
 		SmartDashboard.putNumber("Heading", pigeonController.getHeading());
+		SmartDashboard.putNumber("Arm angle",arm.getCurrentAngle());
 	}
 }

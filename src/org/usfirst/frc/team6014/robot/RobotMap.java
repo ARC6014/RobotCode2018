@@ -36,10 +36,10 @@ public class RobotMap {
 	public static SpeedControllerEnum rearRightEnum = SpeedControllerEnum.VICTORSPX;
 	//Arm
 	public static int leftHinge = 6;
-	public static SpeedControllerEnum leftHingeEnum = SpeedControllerEnum.TALONSRX;
+	public static SpeedControllerEnum leftHingeEnum = SpeedControllerEnum.VICTORSPX;
 	
 	public static int rightHinge = 5;
-	public static SpeedControllerEnum rightHingeEnum = SpeedControllerEnum.TALONSRX;
+	public static SpeedControllerEnum rightHingeEnum = SpeedControllerEnum.VICTORSPX;
 	
 	public static int leftHolder = 8;
 	public static SpeedControllerEnum leftHolderEnum = SpeedControllerEnum.VICTORSPX;
@@ -50,14 +50,14 @@ public class RobotMap {
 	public static int encoderA = 0;//DIO
 	public static int encoderB = 1;//DIO
 	//Ramp
-	/*public static int leftRamp = 8;
+	public static int leftRamp = 8;
 	public static SpeedControllerEnum leftRampEnum = SpeedControllerEnum.VICTORSPX;
 	
 	public static int rightRamp = 9;
 	public static SpeedControllerEnum rightRampEnum = SpeedControllerEnum.VICTORSPX;
 	
 	public static int release = 10;
-	public static SpeedControllerEnum releaseEnum = SpeedControllerEnum.VICTORSPX;*/
+	public static SpeedControllerEnum releaseEnum = SpeedControllerEnum.VICTORSPX;
 	//PigeonController
 	public static int pigeon = 9;//CAN
 	//Perception

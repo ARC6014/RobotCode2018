@@ -15,7 +15,6 @@ public class Teleop {
 		} else {
 			Robot.arm.setHolderSpeed(0);
 		}
-		Robot.drive.setMaxOutput((-Robot.oi.getRawOtherY()+1)/2);
 		//Robot.arm.setHingeSpeed(Robot.oi.getLeftTrigger() - Robot.oi.getRightTrigger());
 	}
 }

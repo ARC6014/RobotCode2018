@@ -15,7 +15,7 @@ import org.usfirst.frc.team6014.robot.RobotMap;
 import com.ctre.phoenix.sensors.PigeonIMU;
 
 /**
- * A subsystem for sensors and vision processing.
+ * A subsystem for the Pigeon IMU.
  */
 public class PigeonController extends PIDSubsystem {
 	
@@ -57,6 +57,5 @@ public class PigeonController extends PIDSubsystem {
 	}
 	public void pidDrive(double speed) {
 			Robot.drive.arcadeDrive(speed, -outPID);
-			System.out.println(outPID);
 	}
 }
