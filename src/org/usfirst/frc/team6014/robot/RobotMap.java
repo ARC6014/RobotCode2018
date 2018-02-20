@@ -23,29 +23,29 @@ public class RobotMap {
 	 * Other types are explained case-by-case.
 	 */
 	//Drive
-	public static int frontLeft = 0;
-	public static SpeedControllerEnum frontLeftEnum = SpeedControllerEnum.VICTORSP;
+	public static int frontLeft = 1;
+	public static SpeedControllerEnum frontLeftEnum = SpeedControllerEnum.VICTORSPX;
 	
-	public static int rearLeft = 1;
-	public static SpeedControllerEnum rearLeftEnum = SpeedControllerEnum.VICTORSP;
+	public static int rearLeft = 2;
+	public static SpeedControllerEnum rearLeftEnum = SpeedControllerEnum.VICTORSPX;
 	
-	public static int frontRight = 1;
-	public static SpeedControllerEnum frontRightEnum = SpeedControllerEnum.TALONSRX;
+	public static int frontRight = 3;
+	public static SpeedControllerEnum frontRightEnum = SpeedControllerEnum.VICTORSPX;
 	
-	public static int rearRight = 3;
-	public static SpeedControllerEnum rearRightEnum = SpeedControllerEnum.VICTORSP;
+	public static int rearRight = 4;
+	public static SpeedControllerEnum rearRightEnum = SpeedControllerEnum.VICTORSPX;
 	//Arm
 	public static int leftHinge = 6;
-	public static SpeedControllerEnum leftHingeEnum = SpeedControllerEnum.PWMVICTORSPX;
+	public static SpeedControllerEnum leftHingeEnum = SpeedControllerEnum.VICTORSPX;
 	
 	public static int rightHinge = 5;
-	public static SpeedControllerEnum rightHingeEnum = SpeedControllerEnum.PWMVICTORSPX;
+	public static SpeedControllerEnum rightHingeEnum = SpeedControllerEnum.VICTORSPX;
 	
-	public static int leftHolder = 4;
-	public static SpeedControllerEnum leftHolderEnum = SpeedControllerEnum.PWMVICTORSPX;
+	public static int leftHolder = 8;
+	public static SpeedControllerEnum leftHolderEnum = SpeedControllerEnum.VICTORSPX;
 	
-	public static int rightHolder = 2;
-	public static SpeedControllerEnum rightHolderEnum = SpeedControllerEnum.PWMVICTORSPX;
+	public static int rightHolder = 7;
+	public static SpeedControllerEnum rightHolderEnum = SpeedControllerEnum.VICTORSPX;
 	
 	public static int encoderA = 0;//DIO
 	public static int encoderB = 1;//DIO
@@ -58,6 +58,7 @@ public class RobotMap {
 	
 	public static int release = 10;
 	public static SpeedControllerEnum releaseEnum = SpeedControllerEnum.VICTORSPX;
+	//PigeonController
+	public static int pigeon = 9;//CAN
 	//Perception
-	public static int pigeon = 2;//CAN
 }

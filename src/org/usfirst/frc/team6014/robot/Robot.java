@@ -135,6 +135,7 @@ public class Robot extends TimedRobot {
 	@Override
 	public void robotPeriodic() {
 		SmartDashboard.putNumber("Heading", pigeonController.getHeading());
+		SmartDashboard.putNumber("Arm angle",arm.getCurrentAngle());
 	}
 	/**
 	 * This function is called to get and store the positions of allied colored switches/scale and store them

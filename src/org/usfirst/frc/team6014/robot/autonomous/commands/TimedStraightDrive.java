@@ -19,6 +19,8 @@ public class TimedStraightDrive extends TimedCommand {
 	double speed,angle;
 	public TimedStraightDrive(double timeout, double speed, double angle) {
 		super(timeout);
+		requires(Robot.pigeonController);
+		requires(Robot.drive);
 		this.speed = speed;
 		this.angle = angle;
 	}
