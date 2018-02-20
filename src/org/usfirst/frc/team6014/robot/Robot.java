@@ -9,6 +9,7 @@ package org.usfirst.frc.team6014.robot;
 
 import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.wpilibj.CameraServer;
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -38,6 +39,7 @@ public class Robot extends TimedRobot {
 	public static final Perception perception = new Perception();
 	public static final PigeonController pigeonController = new PigeonController();
 	public static OI oi;
+	public static String switchPos = "";
 	
 	private double heading,angle;
 
@@ -57,6 +59,7 @@ public class Robot extends TimedRobot {
 		SmartDashboard.putData("Auto mode", chooser);
 		SmartDashboard.putNumber("Heading", heading);
 		SmartDashboard.putNumber("Arm Angle", angle);
+		getGameData();
 		//CameraServer.getInstance().startAutomaticCapture();
 	}
 
@@ -132,5 +135,13 @@ public class Robot extends TimedRobot {
 	@Override
 	public void robotPeriodic() {
 		SmartDashboard.putNumber("Heading", pigeonController.getHeading());
+	}
+	/**
+	 * This function is called to get and store the positions of allied colored switches/scale and store them
+	 */
+	public void getGameData() {
+		//This thing gets a 3 character string with L for left and R for right. The data is given 
+		//according to the robot's position and given in order of closest to farthest switch/scale
+		switchPos = DriverStation.getInstance().getGameSpecificMessage();
 	}
 }
