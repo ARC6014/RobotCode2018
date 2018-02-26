@@ -28,12 +28,13 @@ public class Arm extends PIDSubsystem {
 	
 	Encoder hingeEncoder = new Encoder(RobotMap.encoderA, RobotMap.encoderB, false, Encoder.EncodingType.k4X);
 	
-	double countsPerRevolution = 564;
-	double angularRange = 171;
+	final double countsPerRevolution = 564;
+	double angularRange = 165;
+	double rampMax = 8;
 	private double outPID = 0;
 	
 	public Arm() {
-		super(0.48,1.85,0.031);
+		super(0.08,0,0.02,0.08);
 		hingeEncoder.reset();
 		rightHinge.setInverted(true);
 		rightHolder.setInverted(true);
@@ -57,6 +58,13 @@ public class Arm extends PIDSubsystem {
 	}
 	public void setAngle(double angle) {
 		this.setSetpoint(angle);
+	}
+	public void setRampedAngle(double angle) {
+		if(Math.abs(angle-this.getCurrentAngle())>rampMax) {
+			this.setSetpoint(this.getCurrentAngle()+Math.signum(angle-this.getCurrentAngle())*rampMax);
+		} else {
+			this.setSetpoint(angle);
+		}
 	}
 	public void hingePID() {
 		this.setHingeSpeed(outPID);

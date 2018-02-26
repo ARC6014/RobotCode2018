@@ -17,7 +17,7 @@ import org.usfirst.frc.team6014.robot.autonomous.commands.TimedStraightDrive;
  */
 public class AutoDecisionTreeTest extends CommandGroup {
 	public AutoDecisionTreeTest() {
-		String gameSwitchData = Robot.switchPos.substring(0,2);
+		String gameSwitchData = Robot.gameData.substring(0,2);
 		if(gameSwitchData.length() > 0)
         {
 			if(gameSwitchData.equals("RR"))
@@ -39,6 +39,7 @@ public class AutoDecisionTreeTest extends CommandGroup {
 			else
 			{
 				//There's goddamn error m8
+				System.out.println("NO GAME DATA");
 			}
 			
 		}

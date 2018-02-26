@@ -37,9 +37,9 @@ public class Robot extends TimedRobot {
 	public static final Arm arm = new Arm();
 	//public static final Ramp ramp = new Ramp();
 	public static final Perception perception = new Perception();
-	public static final PigeonController pigeonController = new PigeonController();
+	//public static final PigeonController pigeonController = new PigeonController();
 	public static OI oi;
-	public static String switchPos = "";
+	public static String gameData = "";
 	
 	private double heading,angle;
 
@@ -56,10 +56,7 @@ public class Robot extends TimedRobot {
 		chooser.addDefault("Straight Drive Test", new AutoStraightTest());
 		chooser.addObject("Test 1", new AutoTest());
 		chooser.addObject("Test 2", new AutoTest2());
-		SmartDashboard.putData("Auto mode", chooser);
-		SmartDashboard.putNumber("Heading", heading);
-		SmartDashboard.putNumber("Arm Angle", angle);
-		getGameData();
+		SmartDashboard.putData("Auto Mode", chooser);
 		//CameraServer.getInstance().startAutomaticCapture();
 	}
 
@@ -91,6 +88,8 @@ public class Robot extends TimedRobot {
 	 */
 	@Override
 	public void autonomousInit() {
+		getGameData();
+		SmartDashboard.putString("Game Data", gameData);
 		autonomousCommand = chooser.getSelected();
 		if (autonomousCommand != null) {
 			autonomousCommand.start();
@@ -134,8 +133,7 @@ public class Robot extends TimedRobot {
 	}
 	@Override
 	public void robotPeriodic() {
-		SmartDashboard.putNumber("Heading", pigeonController.getHeading());
-		SmartDashboard.putNumber("Arm angle",arm.getCurrentAngle());
+		SmartDashboard.putNumber("Arm Angle",arm.getCurrentAngle());
 	}
 	/**
 	 * This function is called to get and store the positions of allied colored switches/scale and store them
@@ -143,6 +141,6 @@ public class Robot extends TimedRobot {
 	public void getGameData() {
 		//This thing gets a 3 character string with L for left and R for right. The data is given 
 		//according to the robot's position and given in order of closest to farthest switch/scale
-		switchPos = DriverStation.getInstance().getGameSpecificMessage();
+		gameData = DriverStation.getInstance().getGameSpecificMessage();
 	}
 }

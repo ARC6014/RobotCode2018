@@ -19,7 +19,7 @@ public class TimedStraightDrive extends TimedCommand {
 	double speed,angle;
 	public TimedStraightDrive(double timeout, double speed, double angle) {
 		super(timeout);
-		requires(Robot.pigeonController);
+		//requires(Robot.pigeonController);
 		requires(Robot.drive);
 		this.speed = speed;
 		this.angle = angle;
@@ -28,14 +28,14 @@ public class TimedStraightDrive extends TimedCommand {
 	// Called just before this Command runs the first time
 	@Override
 	protected void initialize() {
-		Robot.pigeonController.setAngle(angle);
-		Robot.pigeonController.enable();
+		//Robot.pigeonController.setAngle(angle);
+		//Robot.pigeonController.enable();
 	}
 
 	// Called repeatedly when this Command is scheduled to run
 	@Override
 	protected void execute() {
-		Robot.pigeonController.pidDrive(speed);
+		//Robot.pigeonController.pidDrive(speed);
 	}
 
 	// Called once after isFinished returns true

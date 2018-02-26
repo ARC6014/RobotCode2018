@@ -22,7 +22,7 @@ public class PigeonController extends PIDSubsystem {
 	PigeonIMU pigeon = new PigeonIMU(RobotMap.pigeon);
 	private double outPID = 0;
 	public PigeonController() {
-		super(0.27, 5/18, 5/72);
+		super(0.27, 0.2778, 0.0694);
 		setAbsoluteTolerance(0.5);
         getPIDController().setContinuous(false);
         pigeon.setFusedHeading(0.0, 10);

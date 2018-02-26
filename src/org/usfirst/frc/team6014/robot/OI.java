@@ -49,13 +49,13 @@ public class OI {
 	double reverseFactor = 1.0;
 	
 	public double getRawY() {
-		return xbox.getY(rightStick);
+		return -xbox.getY(rightStick);
 	}
 	public double getRawX() {
 		return xbox.getX(rightStick);
 	}
 	public double getRawOtherY() {
-		return xbox.getY(leftStick);
+		return -xbox.getY(leftStick);
 	}
 	
 	public boolean getIntakeButton() {
