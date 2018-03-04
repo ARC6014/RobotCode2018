@@ -26,9 +26,9 @@ public class Arm extends PIDSubsystem {
 	SpeedController rightHolder = RobotMap.rightHolderEnum.generate(RobotMap.rightHolder);	
 	SpeedControllerGroup holder;
 	
-	Encoder hingeEncoder = new Encoder(RobotMap.encoderA, RobotMap.encoderB, false, Encoder.EncodingType.k4X);
+	Encoder hingeEncoder = new Encoder(RobotMap.armEncoderA, RobotMap.armEncoderB, false, Encoder.EncodingType.k1X);
 	
-	final double countsPerRevolution = 564;
+	final double countsPerRevolution = 141;
 	double angularRange = 165;
 	double rampMax = 8;
 	private double outPID = 0;

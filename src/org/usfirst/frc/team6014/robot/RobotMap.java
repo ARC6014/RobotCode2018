@@ -34,6 +34,10 @@ public class RobotMap {
 	
 	public static int rearRight = 4;
 	public static SpeedControllerEnum rearRightEnum = SpeedControllerEnum.VICTORSPX;
+	
+	public static int rightEncoderA = 4;//DIO
+	public static int rightEncoderB = 5;//DIO
+	
 	//Arm
 	public static int leftHinge = 6;
 	public static SpeedControllerEnum leftHingeEnum = SpeedControllerEnum.VICTORSPX;
@@ -47,8 +51,8 @@ public class RobotMap {
 	public static int rightHolder = 7;
 	public static SpeedControllerEnum rightHolderEnum = SpeedControllerEnum.VICTORSPX;
 	
-	public static int encoderA = 0;//DIO
-	public static int encoderB = 1;//DIO
+	public static int armEncoderA = 0;//DIO
+	public static int armEncoderB = 1;//DIO
 	//Ramp
 	public static int leftRamp = 8;
 	public static SpeedControllerEnum leftRampEnum = SpeedControllerEnum.VICTORSPX;

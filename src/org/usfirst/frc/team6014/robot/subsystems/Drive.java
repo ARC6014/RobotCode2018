@@ -9,6 +9,7 @@ package org.usfirst.frc.team6014.robot.subsystems;
 
 import org.usfirst.frc.team6014.robot.RobotMap;
 
+import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -25,11 +26,13 @@ public class Drive extends Subsystem {
 	SpeedController rearRight = RobotMap.rearRightEnum.generate(RobotMap.rearRight);
 	SpeedControllerGroup right = new SpeedControllerGroup(frontRight,rearRight);
 	DifferentialDrive drive = new DifferentialDrive(left,right);
+	Encoder rightEncoder = new Encoder(RobotMap.rightEncoderA, RobotMap.rightEncoderB, false, Encoder.EncodingType.k4X);
 	
 	public Drive() {
 		this.setMaxOutput(0.5);
+		rightEncoder.reset();
 	}
-	
+
 	@Override
 	public void initDefaultCommand() {
 	}

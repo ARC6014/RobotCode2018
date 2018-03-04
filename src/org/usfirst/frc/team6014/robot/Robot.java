@@ -8,6 +8,7 @@
 package org.usfirst.frc.team6014.robot;
 
 import edu.wpi.first.networktables.NetworkTable;
+import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.TimedRobot;
@@ -40,6 +41,7 @@ public class Robot extends TimedRobot {
 	//public static final PigeonController pigeonController = new PigeonController();
 	public static OI oi;
 	public static String gameData = "";
+	public static AnalogInput ultra1 = new AnalogInput(0);
 	
 	private double heading,angle;
 
@@ -134,6 +136,7 @@ public class Robot extends TimedRobot {
 	@Override
 	public void robotPeriodic() {
 		SmartDashboard.putNumber("Arm Angle",arm.getCurrentAngle());
+		SmartDashboard.putNumber("Ultrasonic Value", ultra1.getValue());
 	}
 	/**
 	 * This function is called to get and store the positions of allied colored switches/scale and store them
