@@ -16,7 +16,7 @@ public class TurnToAngle extends Command {
 	private double angle;
 	
 	public TurnToAngle(double angle) {
-		//requires(Robot.pigeonController);
+		requires(Robot.motionController);
 		requires(Robot.drive);
 		this.angle = angle;
 	}
@@ -24,19 +24,24 @@ public class TurnToAngle extends Command {
 	// Called just before this Command runs the first time
 	@Override
 	protected void initialize() {
-		//Robot.pigeonController.setAngle(angle);
-		//Robot.pigeonController.enable();
+		Robot.motionController.setAngle(angle);
+		Robot.motionController.enable();
 	}
 
 	// Called repeatedly when this Command is scheduled to run
 	@Override
 	protected void execute() {
-		//Robot.pigeonController.pidDrive(0);
+		Robot.motionController.pidDrive(0);
 	}
 	
 	@Override
 	protected boolean isFinished() {
-		return false;
+		return Robot.motionController.onTarget();
 	}
-
+	
+	@Override
+	protected void end() {
+		Robot.motionController.disable();
+		Robot.drive.arcadeDrive(0, 0);
+	}
 }

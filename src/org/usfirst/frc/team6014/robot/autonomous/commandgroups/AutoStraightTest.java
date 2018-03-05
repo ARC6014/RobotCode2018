@@ -9,6 +9,7 @@ package org.usfirst.frc.team6014.robot.autonomous.commandgroups;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
+import org.usfirst.frc.team6014.robot.Robot;
 import org.usfirst.frc.team6014.robot.autonomous.commands.*;
 
 /**
@@ -16,14 +17,13 @@ import org.usfirst.frc.team6014.robot.autonomous.commands.*;
  */
 public class AutoStraightTest extends CommandGroup {
 	public AutoStraightTest() {
-		addSequential(new RotateArm(40));
-		/*addSequential(new TimedStraightDrive(5.0,0.8,0));
-		addSequentail(new TurnToAngle(90));
-		addSequential(new TimedStraightDrive(3.0,0.8,90));
+		//addSequential(new TimedStraightDrive(3.0,1.0,0));
+		addSequential(new TurnToAngle(90));
+		/*addSequential(new TimedStraightDrive(2.0,0.8,270));
 		addSequential(new TurnToAngle(180));
-		addSequential(new TimedStraightDrive(3.0,0.8,180));
-		addSequential(new TurnToAngle(270));
-		addSequential(new TimedStraightDrive(3.0,0.8,270));
+		addSequential(new TimedStraightDrive(2.0,0.8,180));
+		addSequential(new TurnToAngle(90));
+		addSequential(new TimedStraightDrive(2.0,0.8,90));
 		addSequential(new TurnToAngle(0));*/
 	}
 }
