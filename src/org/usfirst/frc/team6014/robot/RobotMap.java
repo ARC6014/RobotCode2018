@@ -64,4 +64,5 @@ public class RobotMap {
 	public static SpeedControllerEnum releaseEnum = SpeedControllerEnum.VICTORSPX;
 	//Perception
 	public static int sonar = 0;
+	public static final int baseEncoder = 9;
 }

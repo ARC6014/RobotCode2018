@@ -8,11 +8,10 @@
 package org.usfirst.frc.team6014.robot.subsystems;
 
 import org.usfirst.frc.team6014.robot.RobotMap;
-
 import com.ctre.phoenix.sensors.PigeonIMU;
-
+import com.ctre.phoenix.motorcontrol.can.TalonSRX;
+import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import edu.wpi.first.wpilibj.command.Subsystem;
-
 import edu.wpi.first.wpilibj.AnalogInput;
 
 /**
@@ -21,8 +20,10 @@ import edu.wpi.first.wpilibj.AnalogInput;
 public class Perception extends Subsystem {
 	
 	final AnalogInput sonar = new AnalogInput(RobotMap.sonar);
+	final TalonSRX baseEncoder = new TalonSRX(RobotMap.baseEncoder);
 
 	public Perception() {
+		baseEncoder.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, 0);
 	}
 	
 	@Override
@@ -30,9 +31,12 @@ public class Perception extends Subsystem {
 	}
 
 	public double getSonarDistance() {
-                double voltage = sonar.getVoltage();
-                double mms = (voltage / 5.0) * 5000.0;
-                return mms / 10.0;
-        }
+        double voltage = sonar.getVoltage();
+        double mms = (voltage / 5.0) * 5000.0;
+        return mms / 10.0;
+    }
+	public int baseEncoderPosition() {
+		return baseEncoder.getSelectedSensorPosition(0);
+	}
 
 }
