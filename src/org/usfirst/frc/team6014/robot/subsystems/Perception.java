@@ -13,15 +13,26 @@ import com.ctre.phoenix.sensors.PigeonIMU;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
 
+import edu.wpi.first.wpilibj.AnalogInput;
+
 /**
  * A subsystem for sensors and vision processing.
  */
 public class Perception extends Subsystem {
 	
+	final AnalogInput sonar = new AnalogInput(RobotMap.sonar);
+
 	public Perception() {
 	}
 	
 	@Override
 	public void initDefaultCommand() {
 	}
+
+	public double getSonarDistance() {
+                double voltage = sonar.getVoltage();
+                double mms = (voltage / 5.0) * 5000.0;
+                return mms / 10.0;
+        }
+
 }
