@@ -29,6 +29,7 @@ public class Perception extends Subsystem {
 	final Encoder rightEncoder = new Encoder(RobotMap.rightEncoderA, RobotMap.rightEncoderB, false, Encoder.EncodingType.k4X);
 	
 	public Perception() {
+		
 		leftEncoder.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, 0);
 		rightEncoder.reset();
 	}

@@ -53,15 +53,6 @@ public class RobotMap {
 	
 	public static int armEncoderA = 0;//DIO
 	public static int armEncoderB = 1;//DIO
-	//Ramp
-	public static int leftRamp = 8;
-	public static SpeedControllerEnum leftRampEnum = SpeedControllerEnum.VICTORSPX;
-	
-	public static int rightRamp = 9;
-	public static SpeedControllerEnum rightRampEnum = SpeedControllerEnum.VICTORSPX;
-	
-	public static int release = 10;
-	public static SpeedControllerEnum releaseEnum = SpeedControllerEnum.VICTORSPX;
 	//Perception
 	public static int ultra1 = 0;
 	public static int ultra2 = 1;

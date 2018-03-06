@@ -24,7 +24,6 @@ import org.usfirst.frc.team6014.robot.subsystems.Arm;
 import org.usfirst.frc.team6014.robot.subsystems.Drive;
 import org.usfirst.frc.team6014.robot.subsystems.Perception;
 import org.usfirst.frc.team6014.robot.subsystems.MotionController;
-import org.usfirst.frc.team6014.robot.subsystems.Ramp;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -36,14 +35,10 @@ import org.usfirst.frc.team6014.robot.subsystems.Ramp;
 public class Robot extends TimedRobot {
 	public static final Drive drive = new Drive();
 	public static final Arm arm = new Arm();
-	//public static final Ramp ramp = new Ramp();
 	public static final Perception perception = new Perception();
 	public static final MotionController motionController = new MotionController();
 	public static OI oi;
 	public static String gameData = "";
-	public static AnalogInput ultra1 = new AnalogInput(0);
-	
-	private double heading,angle;
 
 	Command autonomousCommand;
 	SendableChooser<Command> chooser = new SendableChooser<>();
@@ -136,8 +131,11 @@ public class Robot extends TimedRobot {
 	@Override
 	public void robotPeriodic() {
 		SmartDashboard.putNumber("Arm Angle",arm.getCurrentAngle());
-		SmartDashboard.putNumber("Ultrasonic Value", ultra1.getValue());
 		SmartDashboard.putNumber("Heading", motionController.getHeading());
+		SmartDashboard.putNumber("Ultrasonic 1", perception.getUltraDistance(1));
+		SmartDashboard.putNumber("Ultrasonic 2", perception.getUltraDistance(2));
+		SmartDashboard.putNumber("Left Encoder Distance", perception.getLeftDistance());
+		SmartDashboard.putNumber("Right Encoder Distance", perception.getRightDistance());
 	}
 	/**
 	 * This function is called to get and store the positions of allied colored switches/scale and store them
