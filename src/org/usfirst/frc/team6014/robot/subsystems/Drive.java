@@ -26,11 +26,9 @@ public class Drive extends Subsystem {
 	SpeedController rearRight = RobotMap.rearRightEnum.generate(RobotMap.rearRight);
 	SpeedControllerGroup right = new SpeedControllerGroup(frontRight,rearRight);
 	DifferentialDrive drive = new DifferentialDrive(left,right);
-	Encoder rightEncoder = new Encoder(RobotMap.rightEncoderA, RobotMap.rightEncoderB, false, Encoder.EncodingType.k4X);
 	
 	public Drive() {
 		this.setMaxOutput(0.5);
-		rightEncoder.reset();
 	}
 
 	@Override

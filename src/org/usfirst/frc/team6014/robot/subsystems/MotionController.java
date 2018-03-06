@@ -24,7 +24,7 @@ public class MotionController extends PIDSubsystem {
 	private double outPID = 0;
 	private boolean reset = true;
 	public MotionController() {
-		super(0.27, 0.2778, 0.0694);
+		super(0.04,0,0);
 		setAbsoluteTolerance(0.5);
 		getPIDController().setInputRange(-180.0,180.0);
 		getPIDController().setOutputRange(-1.0,1.0);

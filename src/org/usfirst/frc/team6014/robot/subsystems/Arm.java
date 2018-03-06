@@ -28,7 +28,7 @@ public class Arm extends PIDSubsystem {
 	
 	Encoder hingeEncoder = new Encoder(RobotMap.armEncoderA, RobotMap.armEncoderB, false, Encoder.EncodingType.k1X);
 	
-	final double countsPerRevolution = 141;
+	final double countsPerRevolution = 360;
 	double angularRange = 165;
 	double rampMax = 8;
 	private double outPID = 0;
@@ -91,10 +91,11 @@ public class Arm extends PIDSubsystem {
 	}
 	
 	public boolean overRotated(boolean dir){
-		double angle = getCurrentAngle();
+		return false;
+		/*double angle = getCurrentAngle();
 		if((angle<=0 && !dir) || (angle>=angularRange && dir)){
 			return true;
 		}
-		return false;
+		return false;*/
 	}
 }

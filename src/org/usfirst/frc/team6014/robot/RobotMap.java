@@ -63,6 +63,7 @@ public class RobotMap {
 	public static int release = 10;
 	public static SpeedControllerEnum releaseEnum = SpeedControllerEnum.VICTORSPX;
 	//Perception
-	public static int sonar = 0;
-	public static final int baseEncoder = 9;
+	public static int ultra1 = 0;
+	public static int ultra2 = 1;
+	public static final int leftEncoder = 9;//CAN
 }

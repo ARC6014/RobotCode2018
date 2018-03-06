@@ -59,10 +59,10 @@ public class OI {
 	}
 	
 	public boolean getIntakeButton() {
-		return xbox.getBumper(leftStick);
+		return xbox.getBumper(rightStick);
 	}
 	public boolean getLaunchButton() {
-		return xbox.getBumper(rightStick);
+		return xbox.getBumper(leftStick);
 	}
 	
 	boolean getReverseButton() {

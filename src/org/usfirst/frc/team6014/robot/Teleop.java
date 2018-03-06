@@ -14,10 +14,10 @@ public class Teleop {
 			if(!((hingeAngle>180 && Robot.oi.getRawOtherY()>0) || (hingeAngle<-10 && Robot.oi.getRawOtherY()<0)))
 			hingeAngle+=Robot.oi.getRawOtherY();
 		}
-		if(Robot.oi.getLaunchButton()) {
+		if(Robot.oi.getIntakeButton()) {
 			Robot.arm.setHolderSpeed(1.0);
-		} else if(Robot.oi.getIntakeButton()) {
-			Robot.arm.setHolderSpeed(-1.0);
+		} else if(Robot.oi.getLaunchButton()) {
+			Robot.arm.setHolderSpeed(-0.75);
 		} else {
 			Robot.arm.setHolderSpeed(0);
 		}
