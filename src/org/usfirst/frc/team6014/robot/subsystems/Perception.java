@@ -26,10 +26,9 @@ public class Perception extends Subsystem {
 	final AnalogInput ultra1 = new AnalogInput(RobotMap.ultra1);
 	final AnalogInput ultra2 = new AnalogInput(RobotMap.ultra2);
 	final TalonSRX leftEncoder = new TalonSRX(RobotMap.leftEncoder);
-	final Encoder rightEncoder = new Encoder(RobotMap.rightEncoderA, RobotMap.rightEncoderB, false, Encoder.EncodingType.k4X);
+	final Encoder rightEncoder = new Encoder(RobotMap.rightEncoderA, RobotMap.rightEncoderB, true, Encoder.EncodingType.k4X);
 	
 	public Perception() {
-		
 		leftEncoder.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, 0);
 		rightEncoder.reset();
 	}
@@ -52,10 +51,10 @@ public class Perception extends Subsystem {
         return mms / 10.0;
     }
 	public double getLeftEncoderRev() {
-		return leftEncoder.getSelectedSensorPosition(0)/leftEncoderCPR;
+		return leftEncoder.getSelectedSensorPosition(0)/(double)leftEncoderCPR;
 	}
 	public double getRightEncoderRev() {
-		return rightEncoder.get()/rightEncoderCPR;
+		return rightEncoder.get()/(double)rightEncoderCPR;
 	}
 	public double getLeftDistance() {
 		return getLeftEncoderRev()*wheelDiam*Math.PI;
