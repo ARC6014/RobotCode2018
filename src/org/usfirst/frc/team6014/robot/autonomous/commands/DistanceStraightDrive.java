@@ -15,6 +15,7 @@ import org.usfirst.frc.team6014.robot.Robot;
  * An example command.  You can replace me with your own command.
  */
 public class DistanceStraightDrive extends Command {
+	private static final double linearDiff = 0.3;
 	
 	double speed,angle,distance,initPos;
 	public DistanceStraightDrive(double distance, double speed, double angle) {
@@ -22,7 +23,7 @@ public class DistanceStraightDrive extends Command {
 		requires(Robot.drive);
 		this.speed = speed;
 		this.angle = angle;
-		this.distance = distance;
+		this.distance = distance-linearDiff;
 	}
 
 	// Called just before this Command runs the first time
@@ -39,6 +40,7 @@ public class DistanceStraightDrive extends Command {
 		Robot.motionController.pidDrive(speed);
 	}
 	
+	@Override
 	protected boolean isFinished() {
 		return (Robot.perception.getRightDistance()-initPos)>distance;
 	}

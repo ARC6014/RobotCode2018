@@ -8,7 +8,6 @@
 package org.usfirst.frc.team6014.robot;
 
 import edu.wpi.first.networktables.NetworkTable;
-import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.TimedRobot;
@@ -17,9 +16,7 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-import org.usfirst.frc.team6014.robot.autonomous.commandgroups.AutoStraightTest;
-import org.usfirst.frc.team6014.robot.autonomous.commandgroups.AutoTest;
-import org.usfirst.frc.team6014.robot.autonomous.commandgroups.AutoTest2;
+import org.usfirst.frc.team6014.robot.autonomous.commandgroups.*;
 import org.usfirst.frc.team6014.robot.subsystems.Arm;
 import org.usfirst.frc.team6014.robot.subsystems.Drive;
 import org.usfirst.frc.team6014.robot.subsystems.Perception;
@@ -50,11 +47,19 @@ public class Robot extends TimedRobot {
 	@Override
 	public void robotInit() {
 		oi = new OI();
-		chooser.addDefault("Straight Drive Test", new AutoStraightTest());
-		chooser.addObject("Test 1", new AutoTest());
-		chooser.addObject("Test 2", new AutoTest2());
+		chooser.addDefault("Run Everywhere", new AutoDecisionTreeTest());
+		chooser.addObject("Run Left", new AutoRunDecisionTreeLeft());
+		chooser.addObject("Run Middle", new AutoRunDecisionTreeMiddle());
+		chooser.addObject("Run Right", new AutoRunDecisionTreeRight());
+		chooser.addObject("Switch Left", new AutoSwitchDecisionTreeLeft());
+		chooser.addObject("Switch Middle", new AutoSwitchDecisionTreeMiddle());
+		chooser.addObject("Switch Right", new AutoSwitchDecisionTreeRight());
+		chooser.addObject("Scale Left", new AutoScaleDecisionTreeLeft());
+		chooser.addObject("Scale Middle", new AutoScaleDecisionTreeMiddle());
+		chooser.addObject("Scale Right", new AutoScaleDecisionTreeRight());
+		chooser.addObject("Straight Drive Test", new AutoStraightTest());
 		SmartDashboard.putData("Auto Mode", chooser);
-		//CameraServer.getInstance().startAutomaticCapture();
+		CameraServer.getInstance().startAutomaticCapture();
 	}
 
 	/**
