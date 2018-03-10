@@ -118,6 +118,7 @@ public class Robot extends TimedRobot {
 	 */
 	@Override
 	public void teleopPeriodic() {
+		System.out.println(motionController.getHeading());
 		Teleop.periodic();
 		Scheduler.getInstance().run();
 	}

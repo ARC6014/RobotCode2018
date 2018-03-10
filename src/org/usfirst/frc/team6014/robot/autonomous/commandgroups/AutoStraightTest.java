@@ -17,13 +17,14 @@ import org.usfirst.frc.team6014.robot.autonomous.commands.*;
  */
 public class AutoStraightTest extends CommandGroup {
 	public AutoStraightTest() {
-		addSequential(new TimedStraightDrive(3.0,0.8,0));
-		//addSequential(new TurnToAngle(90));
-		/*addSequential(new TimedStraightDrive(2.0,0.8,270));
+		addSequential(new DistanceStraightDrive(1,0.8,0));
+		/*addSequential(new TimedStraightDrive(5.0,0.8,0));
+		addSequential(new TurnToAngle(-90));
+		addSequential(new TimedStraightDrive(3.0,0.8,-90));
 		addSequential(new TurnToAngle(180));
-		addSequential(new TimedStraightDrive(2.0,0.8,180));
+		addSequential(new TimedStraightDrive(3.0,0.8,180));
 		addSequential(new TurnToAngle(90));
-		addSequential(new TimedStraightDrive(2.0,0.8,90));
+		addSequential(new TimedStraightDrive(3.0,0.8,90));
 		addSequential(new TurnToAngle(0));*/
 	}
 }

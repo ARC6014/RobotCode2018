@@ -24,8 +24,8 @@ public class MotionController extends PIDSubsystem {
 	private double outPID = 0;
 	private boolean reset = true;
 	public MotionController() {
-		super(0.04,0,0);
-		setAbsoluteTolerance(0.5);
+		super(0.5,0.1,0.5);
+		setAbsoluteTolerance(0.1);
 		getPIDController().setInputRange(-180.0,180.0);
 		getPIDController().setOutputRange(-1.0,1.0);
         getPIDController().setContinuous(true);
@@ -44,6 +44,7 @@ public class MotionController extends PIDSubsystem {
 			mxp.reset();
 			reset=false;
 		}
+		System.out.println(mxp.getYaw());
 		return mxp.getYaw();
 	}
 	@Override
@@ -55,6 +56,6 @@ public class MotionController extends PIDSubsystem {
 		this.outPID = output;
 	}
 	public void pidDrive(double speed) {
-			Robot.drive.arcadeDrive(speed, -outPID);
+			Robot.drive.arcadeDrive(speed, outPID);
 	}
 }
