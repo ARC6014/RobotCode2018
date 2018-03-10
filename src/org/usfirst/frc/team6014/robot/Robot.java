@@ -35,7 +35,8 @@ public class Robot extends TimedRobot {
 	public static final Perception perception = new Perception();
 	public static final MotionController motionController = new MotionController();
 	public static OI oi;
-	public static String gameData = "";
+	public static String gameData = "LLL";
+	public static final double robotLength = 0.9;
 
 	Command autonomousCommand;
 	SendableChooser<Command> chooser = new SendableChooser<>();
@@ -55,7 +56,6 @@ public class Robot extends TimedRobot {
 		chooser.addObject("Switch Middle", new AutoSwitchDecisionTreeMiddle());
 		chooser.addObject("Switch Right", new AutoSwitchDecisionTreeRight());
 		chooser.addObject("Scale Left", new AutoScaleDecisionTreeLeft());
-		chooser.addObject("Scale Middle", new AutoScaleDecisionTreeMiddle());
 		chooser.addObject("Scale Right", new AutoScaleDecisionTreeRight());
 		chooser.addObject("Straight Drive Test", new AutoStraightTest());
 		SmartDashboard.putData("Auto Mode", chooser);
@@ -123,7 +123,6 @@ public class Robot extends TimedRobot {
 	 */
 	@Override
 	public void teleopPeriodic() {
-		System.out.println(motionController.getHeading());
 		Teleop.periodic();
 		Scheduler.getInstance().run();
 	}
@@ -140,7 +139,7 @@ public class Robot extends TimedRobot {
 		SmartDashboard.putNumber("Heading", motionController.getHeading());
 		SmartDashboard.putNumber("Ultrasonic 1", perception.getUltraDistance(1));
 		SmartDashboard.putNumber("Ultrasonic 2", perception.getUltraDistance(2));
-		SmartDashboard.putNumber("Left Encoder Distance", perception.getLeftDistance());
+		//SmartDashboard.putNumber("Left Encoder Distance", perception.getLeftDistance());
 		SmartDashboard.putNumber("Right Encoder Distance", perception.getRightDistance());
 	}
 	/**

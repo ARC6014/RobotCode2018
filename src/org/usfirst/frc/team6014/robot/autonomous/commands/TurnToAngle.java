@@ -14,16 +14,19 @@ import org.usfirst.frc.team6014.robot.Robot;
 public class TurnToAngle extends Command {
 	
 	private double angle;
+	private double speed;
 	
-	public TurnToAngle(double angle) {
+	public TurnToAngle(double angle, double rotationSpeed) {
 		requires(Robot.motionController);
 		requires(Robot.drive);
+		this.speed = rotationSpeed;
 		this.angle = angle;
 	}
 
 	// Called just before this Command runs the first time
 	@Override
 	protected void initialize() {
+		Robot.drive.setMaxOutput(Robot.drive.maxSpeed*speed);
 		Robot.motionController.setAngle(angle);
 		Robot.motionController.enable();
 	}
@@ -31,12 +34,19 @@ public class TurnToAngle extends Command {
 	// Called repeatedly when this Command is scheduled to run
 	@Override
 	protected void execute() {
+		Robot.drive.arcadeDrive(0, 0);
 		Robot.motionController.pidDrive(0);
 	}
 	
 	@Override
 	protected boolean isFinished() {
 		return Robot.motionController.onTarget();
+	}
+	
+	@Override
+	protected void interrupted() {
+		Robot.motionController.disable();
+		Robot.drive.arcadeDrive(0, 0);
 	}
 	
 	@Override

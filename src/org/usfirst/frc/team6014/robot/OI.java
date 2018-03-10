@@ -64,7 +64,9 @@ public class OI {
 	public boolean getLaunchButton() {
 		return xbox.getBumper(leftStick);
 	}
-	
+	public boolean getAngleButton() {
+		return xbox.getBButton();
+	}
 	boolean getReverseButton() {
 		return xbox.getYButton();
 	}

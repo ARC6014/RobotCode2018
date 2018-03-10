@@ -41,11 +41,13 @@ public class TimedStraightDrive extends TimedCommand {
 	// Called once after isFinished returns true
 	@Override
 	protected void end() {
+		Robot.drive.arcadeDrive(0, 0);
 	}
 
 	// Called when another command which requires one or more of the same
 	// subsystems is scheduled to run
 	@Override
 	protected void interrupted() {
+		Robot.drive.arcadeDrive(0, 0);
 	}
 }

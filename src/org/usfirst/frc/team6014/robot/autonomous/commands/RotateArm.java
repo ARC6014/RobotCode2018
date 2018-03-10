@@ -35,7 +35,7 @@ public class RotateArm extends Command {
 	
 	@Override
 	protected boolean isFinished() {
-		return false;//Robot.arm.onTarget();
+		return false; //Robot.arm.onTarget();
 	}
 
 }

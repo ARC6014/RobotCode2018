@@ -19,6 +19,8 @@ import edu.wpi.first.wpilibj.drive.DifferentialDrive;
  * A subsystem for the control of the drivetrain.
  */
 public class Drive extends Subsystem {
+	public double maxSpeed = 0.7;
+	
 	SpeedController frontLeft = RobotMap.frontLeftEnum.generate(RobotMap.frontLeft);
 	SpeedController rearLeft = RobotMap.rearLeftEnum.generate(RobotMap.rearLeft);
 	SpeedControllerGroup left = new SpeedControllerGroup(frontLeft,rearLeft);
@@ -28,7 +30,7 @@ public class Drive extends Subsystem {
 	DifferentialDrive drive = new DifferentialDrive(left,right);
 	
 	public Drive() {
-		this.setMaxOutput(0.5);
+		this.setMaxOutput(maxSpeed);
 	}
 
 	@Override
