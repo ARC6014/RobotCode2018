@@ -44,7 +44,6 @@ public class MotionController extends PIDSubsystem {
 			mxp.reset();
 			reset=false;
 		}
-		System.out.println(mxp.getYaw());
 		return mxp.getYaw();
 	}
 	@Override

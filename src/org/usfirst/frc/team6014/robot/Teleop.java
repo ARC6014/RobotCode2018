@@ -9,8 +9,13 @@ public class Teleop {
 	}
 	public static void periodic() {
 		Robot.drive.arcadeDrive(Robot.oi.getRawY()*Robot.oi.getReverseFactor(),Robot.oi.getRawX());
-		//Robot.drive.setMaxOutput((Robot.oi.getRawOtherY()+1)/2);
 		if(Robot.oi.getAngleButton()) {
+			Robot.arm.setMechanism(0.5);
+		} else {
+			Robot.arm.setMechanism(0);
+		}
+		//Robot.drive.setMaxOutput((Robot.oi.getRawOtherY()+1)/2);
+		/*if(Robot.oi.getAngleButton()) {
 			Robot.arm.enable();
 			Robot.arm.setAngle(Math.max(9, lastAngle));
 			Robot.arm.hingePID();
@@ -20,7 +25,8 @@ public class Teleop {
 			Robot.arm.disable();
 			lastAngle = Robot.arm.getCurrentAngle();
 			Robot.arm.setHingeSpeed(Robot.oi.getRawOtherY());
-		}
+		}*/
+		Robot.arm.setHingeSpeed(Robot.oi.getRawOtherY());
 		if(Robot.oi.getIntakeButton()) {
 			Robot.arm.setHolderSpeed(1.0);
 		} else if(Robot.oi.getLaunchButton()) {
@@ -33,8 +39,6 @@ public class Teleop {
 		} else if(Robot.oi.getRightTrigger()>0.5) {
 			hingeAngle = 60;
 		}
-		//Robot.arm.setHingeSpeed(Robot.oi.getLeftTrigger() - Robot.oi.getRightTrigger());
-		
 		//Robot.arm.setAngle(hingeAngle);
 		//Robot.arm.hingePID();
 	}

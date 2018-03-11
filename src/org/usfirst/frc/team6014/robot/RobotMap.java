@@ -53,8 +53,13 @@ public class RobotMap {
 	
 	public static int armEncoderA = 0;//DIO
 	public static int armEncoderB = 1;//DIO
+	
+	public static int armMechanism = 9;
+	public static SpeedControllerEnum armMechanismEnum = SpeedControllerEnum.TALONSRX;
+	
+	public static int armMechanismEncoderA = 2;//DIO
+	public static int armMechanismEncoderB = 3;//DIO
 	//Perception
 	public static int ultra1 = 0;
 	public static int ultra2 = 1;
-	public static final int leftEncoder = 9;//CAN
 }

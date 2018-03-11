@@ -65,7 +65,7 @@ public class OI {
 		return xbox.getBumper(leftStick);
 	}
 	public boolean getAngleButton() {
-		return xbox.getBButton();
+		return xbox.getRawButton(1);
 	}
 	boolean getReverseButton() {
 		return xbox.getYButton();
@@ -84,5 +84,9 @@ public class OI {
 	}
 	public double getRightTrigger(){
 		return xbox.getTriggerAxis(rightStick);
+	}
+	
+	public double getMechanismAxis() {
+		return xbox.getY(leftStick);
 	}
 }

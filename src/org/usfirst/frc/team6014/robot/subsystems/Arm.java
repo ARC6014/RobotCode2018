@@ -26,7 +26,10 @@ public class Arm extends PIDSubsystem {
 	SpeedController rightHolder = RobotMap.rightHolderEnum.generate(RobotMap.rightHolder);	
 	SpeedControllerGroup holder;
 	
+	SpeedController mechanism = RobotMap.armMechanismEnum.generate(RobotMap.armMechanism);
+	
 	Encoder hingeEncoder = new Encoder(RobotMap.armEncoderA, RobotMap.armEncoderB, false, Encoder.EncodingType.k1X);
+	Encoder armMechanismEncoder = new Encoder(RobotMap.armMechanismEncoderA, RobotMap.armMechanismEncoderB, false, Encoder.EncodingType.k1X);
 	
 	final double countsPerRevolution = 546;
 	double angularRange = 165;
@@ -95,6 +98,10 @@ public class Arm extends PIDSubsystem {
 	public double getCurrentAngle() {
 		int count = hingeEncoder.get();
 		return count*360/countsPerRevolution;
+	}
+	
+	public void setMechanism(double speed) {
+		mechanism.set(speed);
 	}
 	
 	public boolean overRotated(boolean dir){

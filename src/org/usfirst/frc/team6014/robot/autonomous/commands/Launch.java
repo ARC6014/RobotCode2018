@@ -7,52 +7,34 @@
 
 package org.usfirst.frc.team6014.robot.autonomous.commands;
 
-import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.command.TimedCommand;
 
 import org.usfirst.frc.team6014.robot.Robot;
 
-public class TurnToAngle extends Command {
+public class Launch extends TimedCommand {
 	
-	private double angle;
-	private double speed;
-	
-	public TurnToAngle(double angle, double rotationSpeed) {
-		requires(Robot.motionController);
-		requires(Robot.drive);
-		this.speed = rotationSpeed;
-		this.angle = angle;
+	public Launch(double duration) {
+		super(duration);
 	}
 
 	// Called just before this Command runs the first time
 	@Override
 	protected void initialize() {
-		Robot.drive.setMaxOutput(Robot.drive.maxSpeed*speed);
-		Robot.motionController.setAngle(angle);
-		Robot.motionController.enable();
 	}
 
 	// Called repeatedly when this Command is scheduled to run
 	@Override
 	protected void execute() {
-		Robot.motionController.pidDrive(0);
-	}
-	
-	@Override
-	protected boolean isFinished() {
-		return Robot.motionController.onTarget();
+		Robot.arm.setHolderSpeed(-0.6);
 	}
 	
 	@Override
 	protected void interrupted() {
-		Robot.motionController.disable();
-		Robot.drive.setMaxOutput(Robot.drive.maxSpeed);
-		Robot.drive.arcadeDrive(0, 0);
+		Robot.arm.setHolderSpeed(0);
 	}
 	
 	@Override
 	protected void end() {
-		Robot.motionController.disable();
-		Robot.drive.setMaxOutput(Robot.drive.maxSpeed);
-		Robot.drive.arcadeDrive(0, 0);
+		Robot.arm.setHolderSpeed(0);
 	}
 }
