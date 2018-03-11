@@ -62,10 +62,10 @@ public class Arm extends PIDSubsystem {
 	public void setAngle(double angle) {
 		this.setSetpoint(angle);
 		if(angle < getCurrentAngle()) {
-			this.getPIDController().setPID(0.14,0,0.15,0.12);
+			this.getPIDController().setPID(0.12,0,0.18,0.08);
 		}
 		if(angle > getCurrentAngle()) {
-			this.getPIDController().setPID(0.14,0,0.15,0.12);
+			this.getPIDController().setPID(0.12,0,0.18,0.08);
 		}
 	}
 	public void setRampedAngle(double angle) {
@@ -76,7 +76,6 @@ public class Arm extends PIDSubsystem {
 		}
 	}
 	public void hingePID() {
-		
 		this.setHingeSpeed(outPID);
 	}
 	
