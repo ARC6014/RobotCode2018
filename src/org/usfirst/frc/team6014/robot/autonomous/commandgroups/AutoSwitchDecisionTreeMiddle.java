@@ -10,6 +10,7 @@ package org.usfirst.frc.team6014.robot.autonomous.commandgroups;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 import org.usfirst.frc.team6014.robot.Robot;
+import org.usfirst.frc.team6014.robot.autonomous.commands.Delay;
 import org.usfirst.frc.team6014.robot.autonomous.commands.DistanceStraightDrive;
 import org.usfirst.frc.team6014.robot.autonomous.commands.Launch;
 import org.usfirst.frc.team6014.robot.autonomous.commands.MechanismTurn;
@@ -34,6 +35,7 @@ public class AutoSwitchDecisionTreeMiddle extends CommandGroup {
 				addSequential(new DistanceStraightDrive(1.4,0.8,90));
 				addSequential(new TurnToAngle(0,0.6,2));
 				addParallel(new RotateArm(40));
+				addSequential(new Delay(1.0));
 				addSequential(new DistanceStraightDrive(1.4,0.8,0));
 				addSequential(new Launch(0.5));
 				addSequential(new DistanceStraightDrive(-0.3,0.8,0));
@@ -47,6 +49,7 @@ public class AutoSwitchDecisionTreeMiddle extends CommandGroup {
 				addSequential(new DistanceStraightDrive(1.4,0.8,-90));
 				addSequential(new TurnToAngle(0,0.6,2));
 				addParallel(new RotateArm(40));
+				addSequential(new Delay(1.0));
 				addSequential(new DistanceStraightDrive(1.4,0.8,0));
 				addSequential(new Launch(0.5));
 				addSequential(new DistanceStraightDrive(-0.3,0.8,0));
@@ -60,6 +63,7 @@ public class AutoSwitchDecisionTreeMiddle extends CommandGroup {
 				addSequential(new DistanceStraightDrive(1.4,0.8,-90));
 				addSequential(new TurnToAngle(0,0.6,2));
 				addParallel(new RotateArm(40));
+				addSequential(new Delay(1.0));
 				addSequential(new DistanceStraightDrive(1.4,0.8,0));
 				addSequential(new Launch(0.5));
 				addSequential(new DistanceStraightDrive(-0.3,0.8,0));
@@ -73,6 +77,7 @@ public class AutoSwitchDecisionTreeMiddle extends CommandGroup {
 				addSequential(new DistanceStraightDrive(1.4,0.8,90));
 				addSequential(new TurnToAngle(0,0.6,2));
 				addParallel(new RotateArm(40));
+				addSequential(new Delay(1.0));
 				addSequential(new DistanceStraightDrive(1.4,0.8,0));
 				addSequential(new Launch(0.5));
 				addSequential(new DistanceStraightDrive(-0.3,0.8,0));
