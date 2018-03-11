@@ -8,15 +8,17 @@
 package org.usfirst.frc.team6014.robot.autonomous.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.command.TimedCommand;
 
 import org.usfirst.frc.team6014.robot.Robot;
 
-public class TurnToAngle extends Command {
+public class TurnToAngle extends TimedCommand {
 	
 	private double angle;
 	private double speed;
 	
-	public TurnToAngle(double angle, double rotationSpeed) {
+	public TurnToAngle(double angle, double rotationSpeed, double timeout) {
+		super(timeout);
 		requires(Robot.motionController);
 		requires(Robot.drive);
 		this.speed = rotationSpeed;
@@ -37,10 +39,10 @@ public class TurnToAngle extends Command {
 		Robot.motionController.pidDrive(0);
 	}
 	
-	@Override
+	/*@Override
 	protected boolean isFinished() {
 		return Robot.motionController.onTarget();
-	}
+	}*/
 	
 	@Override
 	protected void interrupted() {

@@ -9,11 +9,9 @@ public class Teleop {
 	}
 	public static void periodic() {
 		Robot.drive.arcadeDrive(Robot.oi.getRawY()*Robot.oi.getReverseFactor(),Robot.oi.getRawX());
-		if(Robot.oi.getAngleButton()) {
-			System.out.println("button pressed");
-			Robot.arm.setMechanism(0.5);
+		if(Robot.oi.getMechanismButton()) {
+			Robot.arm.setMechanism(-0.5);
 		} else {
-			System.out.println("nothing");
 			Robot.arm.setMechanism(0);
 		}
 		//Robot.drive.setMaxOutput((Robot.oi.getRawOtherY()+1)/2);

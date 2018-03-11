@@ -10,6 +10,7 @@ package org.usfirst.frc.team6014.robot.autonomous.commandgroups;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 import org.usfirst.frc.team6014.robot.Robot;
+import org.usfirst.frc.team6014.robot.autonomous.commands.MechanismTurn;
 import org.usfirst.frc.team6014.robot.autonomous.commands.TimedStraightDrive;
 
 /**
@@ -17,6 +18,7 @@ import org.usfirst.frc.team6014.robot.autonomous.commands.TimedStraightDrive;
  */
 public class AutoSwitchDecisionTreeRight extends CommandGroup {
 	public AutoSwitchDecisionTreeRight() {
+		addSequential(new MechanismTurn(0.8, -0.4));
 		String gameSwitchData = Robot.gameData.substring(0,2);
 		if(gameSwitchData.length() > 0)
         {

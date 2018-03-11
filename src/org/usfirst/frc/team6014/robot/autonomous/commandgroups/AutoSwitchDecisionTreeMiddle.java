@@ -12,6 +12,7 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 import org.usfirst.frc.team6014.robot.Robot;
 import org.usfirst.frc.team6014.robot.autonomous.commands.DistanceStraightDrive;
 import org.usfirst.frc.team6014.robot.autonomous.commands.Launch;
+import org.usfirst.frc.team6014.robot.autonomous.commands.MechanismTurn;
 import org.usfirst.frc.team6014.robot.autonomous.commands.RotateArm;
 import org.usfirst.frc.team6014.robot.autonomous.commands.TimedStraightDrive;
 import org.usfirst.frc.team6014.robot.autonomous.commands.TurnToAngle;
@@ -21,6 +22,7 @@ import org.usfirst.frc.team6014.robot.autonomous.commands.TurnToAngle;
  */
 public class AutoSwitchDecisionTreeMiddle extends CommandGroup {
 	public AutoSwitchDecisionTreeMiddle() {
+		addSequential(new MechanismTurn(0.8, -0.4));
 		String gameSwitchData = Robot.gameData.substring(0,2);
 		if(gameSwitchData.length() > 0)
         {
@@ -28,11 +30,11 @@ public class AutoSwitchDecisionTreeMiddle extends CommandGroup {
 			{
 				//If first switch and scale are at right side
 				addSequential(new DistanceStraightDrive(2-Robot.robotLength,0.8,0));
-				addSequential(new TurnToAngle(90,0.6));
+				addSequential(new TurnToAngle(90,0.6,2));
 				addSequential(new DistanceStraightDrive(1.4,0.8,90));
-				addSequential(new TurnToAngle(0,0.6));
+				addSequential(new TurnToAngle(0,0.6,2));
 				addParallel(new RotateArm(40));
-				addSequential(new DistanceStraightDrive(1.6,0.8,0));
+				addSequential(new DistanceStraightDrive(1.4,0.8,0));
 				addSequential(new Launch(0.5));
 				addSequential(new DistanceStraightDrive(-0.3,0.8,0));
 				addParallel(new RotateArm(10));
@@ -41,11 +43,11 @@ public class AutoSwitchDecisionTreeMiddle extends CommandGroup {
 			{
 				//If first switch and scale are at left side
 				addSequential(new DistanceStraightDrive(2-Robot.robotLength,0.8,0));
-				addSequential(new TurnToAngle(-90,0.6));
+				addSequential(new TurnToAngle(-90,0.6,2));
 				addSequential(new DistanceStraightDrive(1.4,0.8,-90));
-				addSequential(new TurnToAngle(0,0.6));
+				addSequential(new TurnToAngle(0,0.6,2));
 				addParallel(new RotateArm(40));
-				addSequential(new DistanceStraightDrive(1.6,0.8,0));
+				addSequential(new DistanceStraightDrive(1.4,0.8,0));
 				addSequential(new Launch(0.5));
 				addSequential(new DistanceStraightDrive(-0.3,0.8,0));
 				addParallel(new RotateArm(10));
@@ -54,11 +56,11 @@ public class AutoSwitchDecisionTreeMiddle extends CommandGroup {
 			{
 				//If first switch is at left and the scale is at right side
 				addSequential(new DistanceStraightDrive(2-Robot.robotLength,0.8,0));
-				addSequential(new TurnToAngle(-90,0.6));
+				addSequential(new TurnToAngle(-90,0.6,2));
 				addSequential(new DistanceStraightDrive(1.4,0.8,-90));
-				addSequential(new TurnToAngle(0,0.6));
+				addSequential(new TurnToAngle(0,0.6,2));
 				addParallel(new RotateArm(40));
-				addSequential(new DistanceStraightDrive(1.6,0.8,0));
+				addSequential(new DistanceStraightDrive(1.4,0.8,0));
 				addSequential(new Launch(0.5));
 				addSequential(new DistanceStraightDrive(-0.3,0.8,0));
 				addParallel(new RotateArm(10));
@@ -67,11 +69,11 @@ public class AutoSwitchDecisionTreeMiddle extends CommandGroup {
 			{
 				//If first switch is at right and scale is at left side
 				addSequential(new DistanceStraightDrive(2-Robot.robotLength,0.8,0));
-				addSequential(new TurnToAngle(90,0.6));
+				addSequential(new TurnToAngle(90,0.6,2));
 				addSequential(new DistanceStraightDrive(1.4,0.8,90));
-				addSequential(new TurnToAngle(0,0.6));
+				addSequential(new TurnToAngle(0,0.6,2));
 				addParallel(new RotateArm(40));
-				addSequential(new DistanceStraightDrive(1.6,0.8,0));
+				addSequential(new DistanceStraightDrive(1.4,0.8,0));
 				addSequential(new Launch(0.5));
 				addSequential(new DistanceStraightDrive(-0.3,0.8,0));
 				addParallel(new RotateArm(10));
