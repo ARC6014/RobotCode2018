@@ -24,63 +24,35 @@ import org.usfirst.frc.team6014.robot.autonomous.commands.TurnToAngle;
 public class AutoSwitchDecisionTreeMiddle extends CommandGroup {
 	public AutoSwitchDecisionTreeMiddle() {
 		addSequential(new MechanismTurn(0.8, -0.4));
-		String gameSwitchData = Robot.gameData.substring(0,2);
+		String gameSwitchData = Robot.gameData.substring(0,1);
 		if(gameSwitchData.length() > 0)
         {
-			if(gameSwitchData.equals("RR"))
+			if(gameSwitchData.equals("R"))
 			{
 				//If first switch and scale are at right side
 				addSequential(new DistanceStraightDrive(2-Robot.robotLength,0.8,0));
 				addSequential(new TurnToAngle(90,0.6,2));
 				addSequential(new DistanceStraightDrive(1.4,0.8,90));
 				addSequential(new TurnToAngle(0,0.6,2));
-				addParallel(new RotateArm(40));
-				addSequential(new Delay(1.0));
+				addParallel(new RotateArm(Robot.switchAngle));
+				addSequential(new Delay(2.0));
 				addSequential(new DistanceStraightDrive(1.4,0.8,0));
-				addSequential(new Launch(0.5));
-				addSequential(new DistanceStraightDrive(-0.3,0.8,0));
+				addSequential(new Launch(1.0));
+				addSequential(new DistanceStraightDrive(-0.3,-0.8,0));
 				addParallel(new RotateArm(10));
 			}
-			else if(gameSwitchData.equals("LL"))
+			else if(gameSwitchData.equals("L"))
 			{
 				//If first switch and scale are at left side
 				addSequential(new DistanceStraightDrive(2-Robot.robotLength,0.8,0));
 				addSequential(new TurnToAngle(-90,0.6,2));
 				addSequential(new DistanceStraightDrive(1.4,0.8,-90));
 				addSequential(new TurnToAngle(0,0.6,2));
-				addParallel(new RotateArm(40));
-				addSequential(new Delay(1.0));
+				addParallel(new RotateArm(Robot.switchAngle));
+				addSequential(new Delay(2.0));
 				addSequential(new DistanceStraightDrive(1.4,0.8,0));
-				addSequential(new Launch(0.5));
-				addSequential(new DistanceStraightDrive(-0.3,0.8,0));
-				addParallel(new RotateArm(10));
-			}
-			else if(gameSwitchData.equals("LR"))
-			{
-				//If first switch is at left and the scale is at right side
-				addSequential(new DistanceStraightDrive(2-Robot.robotLength,0.8,0));
-				addSequential(new TurnToAngle(-90,0.6,2));
-				addSequential(new DistanceStraightDrive(1.4,0.8,-90));
-				addSequential(new TurnToAngle(0,0.6,2));
-				addParallel(new RotateArm(40));
-				addSequential(new Delay(1.0));
-				addSequential(new DistanceStraightDrive(1.4,0.8,0));
-				addSequential(new Launch(0.5));
-				addSequential(new DistanceStraightDrive(-0.3,0.8,0));
-				addParallel(new RotateArm(10));
-			}
-			else if(gameSwitchData.equals("RL"))
-			{
-				//If first switch is at right and scale is at left side
-				addSequential(new DistanceStraightDrive(2-Robot.robotLength,0.8,0));
-				addSequential(new TurnToAngle(90,0.6,2));
-				addSequential(new DistanceStraightDrive(1.4,0.8,90));
-				addSequential(new TurnToAngle(0,0.6,2));
-				addParallel(new RotateArm(40));
-				addSequential(new Delay(1.0));
-				addSequential(new DistanceStraightDrive(1.4,0.8,0));
-				addSequential(new Launch(0.5));
-				addSequential(new DistanceStraightDrive(-0.3,0.8,0));
+				addSequential(new Launch(1.0));
+				addSequential(new DistanceStraightDrive(-0.3,-0.8,0));
 				addParallel(new RotateArm(10));
 			}
 			else

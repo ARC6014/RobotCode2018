@@ -42,7 +42,7 @@ public class DistanceStraightDrive extends Command {
 	
 	@Override
 	protected boolean isFinished() {
-		return (Robot.perception.getRightDistance()-initPos)>distance;
+		return Math.abs(Robot.perception.getRightDistance()-initPos)>Math.abs(distance);
 	}
 
 	// Called once after isFinished returns true

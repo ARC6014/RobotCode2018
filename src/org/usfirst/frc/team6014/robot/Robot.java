@@ -37,6 +37,7 @@ public class Robot extends TimedRobot {
 	public static OI oi;
 	public static String gameData = "LLL";
 	public static final double robotLength = 0.85;
+	public static final double switchAngle = 50;
 
 	Command autonomousCommand;
 	SendableChooser<Command> chooser = new SendableChooser<>();
