@@ -35,9 +35,11 @@ public class Arm extends PIDSubsystem {
 	double angularRange = 165;
 	double rampMax = 8;
 	private double outPID = 0;
+	private boolean dropping;
+	double dropVelocity = -10;
 	
 	public Arm() {
-		super(0.12,0,0.02,0.08);
+		super(0.12,0,0.18,0.08);
 		hingeEncoder.reset();
 		rightHinge.setInverted(true);
 		rightHolder.setInverted(true);
@@ -53,7 +55,12 @@ public class Arm extends PIDSubsystem {
 	
 	@Override
 	protected double returnPIDInput() {
-		return getCurrentAngle();
+		if(dropping) {
+			return getCurrentRate();
+		}
+		else {
+			return getCurrentAngle();	
+		}
 	}
 	@Override
 	protected void usePIDOutput(double output) {
@@ -61,12 +68,6 @@ public class Arm extends PIDSubsystem {
 	}
 	public void setAngle(double angle) {
 		this.setSetpoint(angle);
-		if(angle < getCurrentAngle()) {
-			this.getPIDController().setPID(0.12,0,0.18,0.08);
-		}
-		if(angle > getCurrentAngle()) {
-			this.getPIDController().setPID(0.12,0,0.18,0.08);
-		}
 	}
 	public void setRampedAngle(double angle) {
 		if(Math.abs(angle-this.getCurrentAngle())>rampMax) {
@@ -99,6 +100,10 @@ public class Arm extends PIDSubsystem {
 		return count*360/countsPerRevolution;
 	}
 	
+	public double getCurrentRate() {
+		return hingeEncoder.getRate() * 360 / countsPerRevolution;
+	}
+	
 	public void setMechanism(double speed) {
 		mechanism.set(speed);
 	}
@@ -110,5 +115,11 @@ public class Arm extends PIDSubsystem {
 			return true;
 		}
 		return false;*/
+	}
+	public void drop() {
+		getPIDController().setPID(0.1, 0, 0);
+		setAbsoluteTolerance(5);
+		setSetpoint(dropVelocity);
+		dropping = true;
 	}
 }
