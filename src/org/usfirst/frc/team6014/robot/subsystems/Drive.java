@@ -19,7 +19,7 @@ import edu.wpi.first.wpilibj.drive.DifferentialDrive;
  * A subsystem for the control of the drivetrain.
  */
 public class Drive extends Subsystem {
-	public double maxSpeed = 0.7;
+	public double maxSpeed = 0.6;
 	
 	SpeedController frontLeft = RobotMap.frontLeftEnum.generate(RobotMap.frontLeft);
 	SpeedController rearLeft = RobotMap.rearLeftEnum.generate(RobotMap.rearLeft);
@@ -38,6 +38,9 @@ public class Drive extends Subsystem {
 	}
 	public void arcadeDrive(double speed, double rotation) {
 		drive.arcadeDrive(speed,rotation);
+	}
+	public void tankDrive(double leftSpeed, double rightSpeed) {
+		drive.tankDrive(leftSpeed, rightSpeed);
 	}
 	public void setMaxOutput(double speed) {
 		drive.setMaxOutput(speed);

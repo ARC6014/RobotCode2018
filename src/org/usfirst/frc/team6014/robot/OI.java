@@ -48,16 +48,18 @@ public class OI {
 	boolean prevReverseButton = false;
 	double reverseFactor = 1.0;
 	
-	public double getRawY() {
+	public double getRawRightY() {
 		return -xbox.getY(rightStick);
 	}
-	public double getRawX() {
+	public double getRawRightX() {
 		return xbox.getX(rightStick);
 	}
-	public double getRawOtherY() {
+	public double getRawLeftY() {
 		return -xbox.getY(leftStick);
 	}
-	
+	public double getRawLeftX() {
+		return xbox.getX(leftStick);
+	}
 	public boolean getIntakeButton() {
 		return xbox.getBumper(rightStick);
 	}

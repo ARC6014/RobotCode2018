@@ -60,6 +60,6 @@ public class RobotMap {
 	public static int armMechanismEncoderA = 2;//DIO
 	public static int armMechanismEncoderB = 3;//DIO
 	//Perception
-	public static int ultra1 = 0;
-	public static int ultra2 = 1;
+	public static int ultra1 = 0;//Analog
+	public static int ultra2 = 1;//Analog
 }

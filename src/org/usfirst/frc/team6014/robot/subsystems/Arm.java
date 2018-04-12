@@ -58,9 +58,7 @@ public class Arm extends PIDSubsystem {
 		if(dropping) {
 			return getCurrentRate();
 		}
-		else {
-			return getCurrentAngle();	
-		}
+		return getCurrentAngle();
 	}
 	@Override
 	protected void usePIDOutput(double output) {
