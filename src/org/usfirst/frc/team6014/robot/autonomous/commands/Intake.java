@@ -11,16 +11,10 @@ import edu.wpi.first.wpilibj.command.TimedCommand;
 
 import org.usfirst.frc.team6014.robot.Robot;
 
-/**
- * An example command.  You can replace me with your own command.
- */
-public class TimedDrive extends TimedCommand {
+public class Intake extends TimedCommand {
 	
-	double y,x;
-	public TimedDrive(double timeout, double y, double x) {
-		super(timeout);
-		this.y=y;
-		this.x=x;
+	public Intake(double duration) {
+		super(duration);
 	}
 
 	// Called just before this Command runs the first time
@@ -31,19 +25,16 @@ public class TimedDrive extends TimedCommand {
 	// Called repeatedly when this Command is scheduled to run
 	@Override
 	protected void execute() {
-		Robot.drive.arcadeDrive(y,x);
+		Robot.arm.setHolderSpeed(1.0);
 	}
-
-	// Called once after isFinished returns true
-	@Override
-	protected void end() {
-		Robot.drive.arcadeDrive(0, 0);
-	}
-
-	// Called when another command which requires one or more of the same
-	// subsystems is scheduled to run
+	
 	@Override
 	protected void interrupted() {
-		end();
+		Robot.arm.setHolderSpeed(0);
+	}
+	
+	@Override
+	protected void end() {
+		Robot.arm.setHolderSpeed(0);
 	}
 }

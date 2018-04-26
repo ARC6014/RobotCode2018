@@ -50,15 +50,12 @@ public class Robot extends TimedRobot {
 	public void robotInit() {
 		oi = new OI();
 		chooser.addDefault("Run Everywhere", new AutoDecisionTreeTest());
-		chooser.addObject("Run Left", new AutoRunDecisionTreeLeft());
-		chooser.addObject("Run Middle", new AutoRunDecisionTreeMiddle());
-		chooser.addObject("Run Right", new AutoRunDecisionTreeRight());
 		chooser.addObject("Switch Left", new AutoSwitchDecisionTreeLeft());
 		chooser.addObject("Switch Middle", new AutoSwitchDecisionTreeMiddle());
 		chooser.addObject("Switch Right", new AutoSwitchDecisionTreeRight());
-		chooser.addObject("Scale Left", new AutoScaleDecisionTreeLeft());
-		chooser.addObject("Scale Right", new AutoScaleDecisionTreeRight());
 		chooser.addObject("Straight Drive Test", new AutoStraightTest());
+		chooser.addObject("Normal Run", new JustStraight());
+		chooser.addObject("Delayed Run", new DelayedStraight());
 		SmartDashboard.putData("Auto Mode", chooser);
 		CameraServer.getInstance().startAutomaticCapture();
 	}
@@ -92,8 +89,10 @@ public class Robot extends TimedRobot {
 	@Override
 	public void autonomousInit() {
 		getGameData();
-		SmartDashboard.putString("Game Data", gameData);
 		autonomousCommand = chooser.getSelected();
+		SmartDashboard.putString("Game Data", gameData);
+		Robot.drive.resetEncoders();
+		Robot.motionController.reset();
 		if (autonomousCommand != null) {
 			autonomousCommand.start();
 		}
@@ -138,9 +137,7 @@ public class Robot extends TimedRobot {
 	public void robotPeriodic() {
 		SmartDashboard.putNumber("Arm Angle",arm.getCurrentAngle());
 		SmartDashboard.putNumber("Heading", motionController.getHeading());
-		SmartDashboard.putNumber("Ultrasonic 1", perception.getUltraDistance(1));
-		SmartDashboard.putNumber("Ultrasonic 2", perception.getUltraDistance(2));
-		//SmartDashboard.putNumber("Left Encoder Distance", perception.getLeftDistance());
+		SmartDashboard.putNumber("Left Encoder Distance", perception.getLeftDistance());
 		SmartDashboard.putNumber("Right Encoder Distance", perception.getRightDistance());
 	}
 	/**

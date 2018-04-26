@@ -11,7 +11,6 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 
 import org.usfirst.frc.team6014.robot.Robot;
 import org.usfirst.frc.team6014.robot.autonomous.commands.DistanceStraightDrive;
-import org.usfirst.frc.team6014.robot.autonomous.commands.MechanismTurn;
 import org.usfirst.frc.team6014.robot.autonomous.commands.TimedStraightDrive;
 
 /**
@@ -19,39 +18,38 @@ import org.usfirst.frc.team6014.robot.autonomous.commands.TimedStraightDrive;
  */
 public class AutoDecisionTreeTest extends CommandGroup {
 	public AutoDecisionTreeTest() {
-		addSequential(new MechanismTurn(0.8, -0.4));
 		String gameSwitchData = Robot.gameData.substring(0,2);
 		if(gameSwitchData.length() > 0)
         {
 			if(gameSwitchData.equals("RR"))
 			{
 				//If first switch and scale are at right side
-				addSequential(new DistanceStraightDrive(3-Robot.robotLength,0.8,0));
+				addSequential(new TimedStraightDrive(3-Robot.robotLength,0.8,0));
 				
 			}
 			else if(gameSwitchData.equals("LL"))
 			{
 				//If first switch and scale are at left side
-				addSequential(new DistanceStraightDrive(3-Robot.robotLength,0.8,0));
+				addSequential(new TimedStraightDrive(3-Robot.robotLength,0.8,0));
 				
 			}
 			else if(gameSwitchData.equals("LR"))
 			{
 				//If first switch is at left and the scale is at right side
-				addSequential(new DistanceStraightDrive(3-Robot.robotLength,0.8,0));
+				addSequential(new TimedStraightDrive(3-Robot.robotLength,0.8,0));
 				
 			}
 			else if(gameSwitchData.equals("RL"))
 			{
 				//If first switch is at right and scale is at left side
-				addSequential(new DistanceStraightDrive(3-Robot.robotLength,0.8,0));
+				addSequential(new TimedStraightDrive(3-Robot.robotLength,0.8,0));
 				
 			}
 			else
 			{
 				//There's goddamn error m8
 				System.out.println("NO GAME DATA");
-				addSequential(new DistanceStraightDrive(3-Robot.robotLength,0.8,0));
+				addSequential(new TimedStraightDrive(3-Robot.robotLength,0.8,0));
 			}
 			
 		}

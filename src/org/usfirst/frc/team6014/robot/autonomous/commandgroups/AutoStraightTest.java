@@ -17,7 +17,8 @@ import org.usfirst.frc.team6014.robot.autonomous.commands.*;
  */
 public class AutoStraightTest extends CommandGroup {
 	public AutoStraightTest() {
-		addSequential(new RotateArm(Robot.switchAngle));
+		addParallel(new RecordData(2));
+		addSequential(new TimedDrive(2,0.8,0));
 		/*addSequential(new TimedStraightDrive(1.5,0.8,0));
 		addSequential(new TurnToAngle(90,0.6));
 		addSequential(new TimedStraightDrive(5.0,0.8,0));

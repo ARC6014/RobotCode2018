@@ -13,7 +13,6 @@ import org.usfirst.frc.team6014.robot.Robot;
 import org.usfirst.frc.team6014.robot.autonomous.commands.Delay;
 import org.usfirst.frc.team6014.robot.autonomous.commands.DistanceStraightDrive;
 import org.usfirst.frc.team6014.robot.autonomous.commands.Launch;
-import org.usfirst.frc.team6014.robot.autonomous.commands.MechanismTurn;
 import org.usfirst.frc.team6014.robot.autonomous.commands.RotateArm;
 import org.usfirst.frc.team6014.robot.autonomous.commands.TimedStraightDrive;
 import org.usfirst.frc.team6014.robot.autonomous.commands.TurnToAngle;
@@ -23,37 +22,23 @@ import org.usfirst.frc.team6014.robot.autonomous.commands.TurnToAngle;
  */
 public class AutoSwitchDecisionTreeRight extends CommandGroup {
 	public AutoSwitchDecisionTreeRight() {
-		addSequential(new MechanismTurn(0.8, -0.4));
+		addSequential(new TimedStraightDrive(1.6,-0.8,0));
 		String gameSwitchData = Robot.gameData.substring(0,1);
 		if(gameSwitchData.length() > 0)
         {
 			if(gameSwitchData.equals("R"))
 			{
 				//If first switch at right side
-				addSequential(new DistanceStraightDrive(3.8-Robot.robotLength,0.8,0));
-				addSequential(new TurnToAngle(-90,0.6,2));
-				addParallel(new RotateArm(Robot.switchAngle));
-				addSequential(new Delay(1.5));
-				addSequential(new DistanceStraightDrive(1.2,0.6,-90));
-				addSequential(new Launch(1.0));
-				addSequential(new DistanceStraightDrive(-0.3,-0.6,-90));
-				addParallel(new RotateArm(10));
+				addSequential(new TurnToAngle(-90,-0.6,2));
+				addSequential(new TimedStraightDrive(0.4,-0.8,-90));
+				addSequential(new Launch(0.6));
+				
 			}
 			else if(gameSwitchData.equals("L"))
 			{
 				//If first switch at left side
-				addSequential(new DistanceStraightDrive(5.2-Robot.robotLength,0.8,0));
-				addSequential(new TurnToAngle(-90,0.6,1.5));
-				addSequential(new DistanceStraightDrive(4.4,0.8,-90));
-				addSequential(new TurnToAngle(-180,0.6,1.5));
-				addSequential(new DistanceStraightDrive(1.6,0.8,-180));
-				addSequential(new TurnToAngle(90,0.6,1.5));
-				addParallel(new RotateArm(Robot.switchAngle));
-				addSequential(new Delay(1.5));
-				addSequential(new DistanceStraightDrive(0.8,0.6,90));
-				addSequential(new Launch(1.0));
-				addSequential(new DistanceStraightDrive(-0.3,-0.6,90));
-				addParallel(new RotateArm(Robot.switchAngle));
+				addSequential(new TimedStraightDrive(0.8,-0.8,0));
+				
 			}
 			else
 			{

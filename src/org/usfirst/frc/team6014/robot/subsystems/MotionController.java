@@ -40,11 +40,10 @@ public class MotionController extends PIDSubsystem {
 	}
 	
 	public double getHeading() {
-		if(reset) {
-			mxp.reset();
-			reset=false;
-		}
 		return mxp.getYaw();
+	}
+	public void reset() {
+		mxp.reset();
 	}
 	@Override
 	protected double returnPIDInput() {

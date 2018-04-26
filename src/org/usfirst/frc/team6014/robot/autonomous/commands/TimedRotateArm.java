@@ -11,13 +11,12 @@ import edu.wpi.first.wpilibj.command.TimedCommand;
 
 import org.usfirst.frc.team6014.robot.Robot;
 
-public class MechanismTurn extends TimedCommand {
+public class TimedRotateArm extends TimedCommand {
 	
-	private double speed = 0;
-	
-	public MechanismTurn(double duration, double speed) {
+	double rotSpeed;
+	public TimedRotateArm(double duration, double rot) {
 		super(duration);
-		this.speed = speed;
+		this.rotSpeed=rot;
 	}
 
 	// Called just before this Command runs the first time
@@ -28,16 +27,16 @@ public class MechanismTurn extends TimedCommand {
 	// Called repeatedly when this Command is scheduled to run
 	@Override
 	protected void execute() {
-		Robot.arm.setMechanism(speed);
+		Robot.arm.setHingeSpeed(rotSpeed);
 	}
 	
 	@Override
 	protected void interrupted() {
-		Robot.arm.setMechanism(0);
+		Robot.arm.setHingeSpeed(0);
 	}
 	
 	@Override
 	protected void end() {
-		Robot.arm.setMechanism(0);
+		Robot.arm.setHingeSpeed(0);
 	}
 }

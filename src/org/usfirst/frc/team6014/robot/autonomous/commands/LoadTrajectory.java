@@ -7,43 +7,39 @@
 
 package org.usfirst.frc.team6014.robot.autonomous.commands;
 
+import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.TimedCommand;
 
 import org.usfirst.frc.team6014.robot.Robot;
 
-/**
- * An example command.  You can replace me with your own command.
- */
-public class TimedDrive extends TimedCommand {
-	
-	double y,x;
-	public TimedDrive(double timeout, double y, double x) {
-		super(timeout);
-		this.y=y;
-		this.x=x;
+public class LoadTrajectory extends Command {
+	//Trajectory.Config config = new Trajectory.Config(Trajectory.FitMethod.HERMITE_CUBIC, Trajectory.Config.SAMPLES_HIGH, 0.05, 1.7,2.0,60.0);
+	boolean isFinished = false;
+	public LoadTrajectory(double duration) {
+		super(duration);
 	}
 
 	// Called just before this Command runs the first time
 	@Override
 	protected void initialize() {
+		
 	}
 
 	// Called repeatedly when this Command is scheduled to run
 	@Override
 	protected void execute() {
-		Robot.drive.arcadeDrive(y,x);
 	}
-
-	// Called once after isFinished returns true
+	
 	@Override
-	protected void end() {
-		Robot.drive.arcadeDrive(0, 0);
+	protected boolean isFinished() {
+		return isFinished;
 	}
-
-	// Called when another command which requires one or more of the same
-	// subsystems is scheduled to run
+	
 	@Override
 	protected void interrupted() {
-		end();
+	}
+	
+	@Override
+	protected void end() {
 	}
 }

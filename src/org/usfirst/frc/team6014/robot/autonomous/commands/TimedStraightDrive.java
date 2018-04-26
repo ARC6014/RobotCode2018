@@ -41,6 +41,7 @@ public class TimedStraightDrive extends TimedCommand {
 	// Called once after isFinished returns true
 	@Override
 	protected void end() {
+		Robot.motionController.disable();
 		Robot.drive.arcadeDrive(0, 0);
 	}
 
@@ -48,6 +49,6 @@ public class TimedStraightDrive extends TimedCommand {
 	// subsystems is scheduled to run
 	@Override
 	protected void interrupted() {
-		Robot.drive.arcadeDrive(0, 0);
+		end();
 	}
 }

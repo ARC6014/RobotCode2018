@@ -9,41 +9,53 @@ package org.usfirst.frc.team6014.robot.autonomous.commands;
 
 import edu.wpi.first.wpilibj.command.TimedCommand;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+
 import org.usfirst.frc.team6014.robot.Robot;
 
-/**
- * An example command.  You can replace me with your own command.
- */
-public class TimedDrive extends TimedCommand {
+public class RecordData extends TimedCommand {
 	
-	double y,x;
-	public TimedDrive(double timeout, double y, double x) {
-		super(timeout);
-		this.y=y;
-		this.x=x;
+	BufferedWriter out;
+	public RecordData(double duration) {
+		super(duration);
 	}
 
 	// Called just before this Command runs the first time
 	@Override
 	protected void initialize() {
+		out = null;
 	}
 
 	// Called repeatedly when this Command is scheduled to run
 	@Override
 	protected void execute() {
-		Robot.drive.arcadeDrive(y,x);
+		try  
+		{
+		    FileWriter fstream = new FileWriter("posdata.txt", false);
+		    out = new BufferedWriter(fstream);
+		    out.write(Robot.perception.getLeftDistance()+" "+Robot.perception.getRightDistance()+"\n");
+		}
+		catch (IOException e)
+		{
+		    e.printStackTrace();
+		}
 	}
-
-	// Called once after isFinished returns true
-	@Override
-	protected void end() {
-		Robot.drive.arcadeDrive(0, 0);
-	}
-
-	// Called when another command which requires one or more of the same
-	// subsystems is scheduled to run
+	
 	@Override
 	protected void interrupted() {
 		end();
+	}
+	
+	@Override
+	protected void end() {
+		if(out!=null) {
+			try {
+				out.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
 	}
 }

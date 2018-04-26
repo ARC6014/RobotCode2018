@@ -9,6 +9,9 @@ package org.usfirst.frc.team6014.robot;
 
 import org.usfirst.frc.team6014.robot.utility.SpeedControllerEnum;
 
+import com.ctre.phoenix.motorcontrol.can.TalonSRX;
+import com.ctre.phoenix.motorcontrol.can.VictorSPX;
+
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
  * to a variable name. This provides flexibility changing wiring, makes checking
@@ -23,7 +26,11 @@ public class RobotMap {
 	 * Other types are explained case-by-case.
 	 */
 	//Drive
-	public static int frontLeft = 1;
+	public static TalonSRX frontLeft = new TalonSRX(1);
+	public static VictorSPX rearLeft = new VictorSPX(2);
+	public static TalonSRX frontRight = new TalonSRX(3);
+	public static VictorSPX rearRight = new VictorSPX(4);
+	/*public static int frontLeft = 1;
 	public static SpeedControllerEnum frontLeftEnum = SpeedControllerEnum.VICTORSPX;
 	
 	public static int rearLeft = 2;
@@ -33,8 +40,10 @@ public class RobotMap {
 	public static SpeedControllerEnum frontRightEnum = SpeedControllerEnum.VICTORSPX;
 	
 	public static int rearRight = 4;
-	public static SpeedControllerEnum rearRightEnum = SpeedControllerEnum.VICTORSPX;
+	public static SpeedControllerEnum rearRightEnum = SpeedControllerEnum.VICTORSPX;*/
 	
+	public static int leftEncoderA = 2;
+	public static int leftEncoderB = 3;
 	public static int rightEncoderA = 4;//DIO
 	public static int rightEncoderB = 5;//DIO
 	
@@ -54,11 +63,6 @@ public class RobotMap {
 	public static int armEncoderA = 0;//DIO
 	public static int armEncoderB = 1;//DIO
 	
-	public static int armMechanism = 9;
-	public static SpeedControllerEnum armMechanismEnum = SpeedControllerEnum.TALONSRX;
-	
-	public static int armMechanismEncoderA = 2;//DIO
-	public static int armMechanismEncoderB = 3;//DIO
 	//Perception
 	public static int ultra1 = 0;//Analog
 	public static int ultra2 = 1;//Analog
