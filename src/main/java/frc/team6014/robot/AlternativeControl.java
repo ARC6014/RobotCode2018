@@ -43,22 +43,23 @@ public class OI {
 	// until it is finished as determined by it's isFinished method.
 	// button.whenReleased(new ExampleCommand());
 	XboxController xbox = new XboxController(0);
+	XboxController xboxDrive = new XboxController(1);
 	GenericHID.Hand rightStick = GenericHID.Hand.kRight;
 	GenericHID.Hand leftStick = GenericHID.Hand.kLeft;
 	boolean prevReverseButton = false;
 	double reverseFactor = 1.0;
-	
-	public double getRawRightY() {
-		return -xbox.getY(rightStick);
-	}
+
+
 	public double getRawRightX() {
-		return xbox.getX(rightStick);
+		return xboxDrive.getX(rightStick);
 	}
 	public double getRawLeftY() {
-		return -xbox.getY(leftStick);
+		return -xboxDrive.getY(leftStick);
 	}
-	public double getRawLeftX() {
-		return xbox.getX(leftStick);
+
+
+	public double getHingeY()	{
+		return -xbox.getY(leftStick)
 	}
 	public boolean getIntakeButton() {
 		return xbox.getBumper(leftStick);
