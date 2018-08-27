@@ -34,7 +34,7 @@ public class Robot extends TimedRobot {
 	public static final Arm arm = new Arm();
 	public static final Perception perception = new Perception();
 	public static final MotionController motionController = new MotionController();
-	public static BasicControl control;
+	public static BasicControl oi;
 	public static String gameData = "LLL";
 	public static final double robotLength = 0.85;
 	public static final double switchAngle = 50;
@@ -48,7 +48,7 @@ public class Robot extends TimedRobot {
 	 */
 	@Override
 	public void robotInit() {
-		control = new BasicControl();
+		oi = new BasicControl();
 		chooser.addDefault("Run Everywhere", new AutoDecisionTreeTest());
 		chooser.addObject("Switch Left", new AutoSwitchDecisionTreeLeft());
 		chooser.addObject("Switch Middle", new AutoSwitchDecisionTreeMiddle());
