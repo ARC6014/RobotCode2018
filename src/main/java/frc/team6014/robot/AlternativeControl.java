@@ -59,7 +59,7 @@ public class OI {
 
 
 	public double getHingeY()	{
-		return -xbox.getY(leftStick)
+		return -xbox.getY(leftStick);
 	}
 	public boolean getIntakeButton() {
 		return xbox.getBumper(leftStick);
