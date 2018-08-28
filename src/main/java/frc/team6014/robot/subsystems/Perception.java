@@ -51,10 +51,10 @@ public class Perception extends Subsystem {
         return mms / 10.0;
     }*/
 	public double getLeftEncoderRev() {
-		return Robot.drive.getLeftEncoderPos()/(double)leftEncoderCPR;
+		return Robot.drive.getLeftEncoderPos()/(double)(leftEncoderCPR*4);
 	}
 	public double getRightEncoderRev() {
-		return Robot.drive.getRightEncoderPos()/(double)rightEncoderCPR;
+		return Robot.drive.getRightEncoderPos()/(double)(rightEncoderCPR*4);
 	}
 	public double getLeftDistance() {
 		return getLeftEncoderRev()*wheelDiam*Math.PI;

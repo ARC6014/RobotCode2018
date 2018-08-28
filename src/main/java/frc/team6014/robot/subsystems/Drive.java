@@ -47,7 +47,10 @@ public class Drive extends Subsystem {
 		
 		frontLeft.configNeutralDeadband(0.02, 20);
 		frontRight.configNeutralDeadband(0.02, 20);
-		
+
+		frontLeft.setSensorPhase(true);
+		frontRight.setSensorPhase(true);
+
 		frontLeft.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, 0, 20);
 		frontRight.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, 0, 20);
 		
