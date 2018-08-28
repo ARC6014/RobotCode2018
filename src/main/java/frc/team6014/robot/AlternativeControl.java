@@ -50,10 +50,10 @@ public class AlternativeControl {
 	double reverseFactor = 1.0;
 
 
-	public double getRawRightX() {
+	public double getDriveX() {
 		return xboxDrive.getX(rightStick);
 	}
-	public double getRawLeftY() {
+	public double getDriveY() {
 		return -xboxDrive.getY(leftStick);
 	}
 
