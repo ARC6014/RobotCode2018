@@ -17,6 +17,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import frc.team6014.robot.autonomous.commandgroups.*;
+import frc.team6014.robot.autonomous.commands.FollowPath;
 import frc.team6014.robot.subsystems.Arm;
 import frc.team6014.robot.subsystems.Drive;
 import frc.team6014.robot.subsystems.Perception;
@@ -89,7 +90,7 @@ public class Robot extends TimedRobot {
 	@Override
 	public void autonomousInit() {
 		getGameData();
-		autonomousCommand = chooser.getSelected();
+		autonomousCommand = new FollowPath(); // chooser.getSelected();
 		SmartDashboard.putString("Game Data", gameData);
 		Robot.drive.resetEncoders();
 		Robot.motionController.reset();
