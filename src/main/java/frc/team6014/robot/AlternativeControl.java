@@ -57,6 +57,18 @@ public class AlternativeControl {
 		return -xboxDrive.getY(leftStick);
 	}
 
+	boolean getReverseButton() {
+		return xboxDrive.getYButton();
+	}
+	public double getReverseFactor() {
+		boolean curReverseButton = getReverseButton();
+		if(curReverseButton && !prevReverseButton) {
+			reverseFactor*=-1.0;
+		}
+		prevReverseButton = curReverseButton;
+		return reverseFactor;
+	}
+
 
 	public double getHingeY()	{
 		return -xbox.getY(leftStick);
@@ -67,18 +79,7 @@ public class AlternativeControl {
 	public boolean getLaunchButton() {
 		return xbox.getBumper(rightStick);
 	}
-	boolean getReverseButton() {
-		return xbox.getYButton();
-	}
-	public double getReverseFactor() {
-		boolean curReverseButton = getReverseButton();
-		if(curReverseButton && !prevReverseButton) {
-			reverseFactor*=-1.0;
-		}
-		prevReverseButton = curReverseButton;
-		return reverseFactor;
-	}
-	
+
 	public double getLeftTrigger(){
 		return xbox.getTriggerAxis(leftStick);
 	}
