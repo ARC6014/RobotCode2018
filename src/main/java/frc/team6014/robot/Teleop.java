@@ -25,9 +25,9 @@ public class Teleop {
 		}*/
 		Robot.arm.setHingeSpeed(Robot.oi.getHingeY());
 		if(Robot.oi.getIntakeButton()) {
-			Robot.arm.setHolderSpeed(1.0);
+			Robot.arm.setHolderSpeed(0.65);
 		} else if(Robot.oi.getLaunchButton()) {
-			Robot.arm.setHolderSpeed(-0.65);
+			Robot.arm.setHolderSpeed(-1.00);
 		} else {
 			Robot.arm.setHolderSpeed(0);
 		}
