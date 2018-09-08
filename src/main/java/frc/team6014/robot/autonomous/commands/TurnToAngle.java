@@ -47,14 +47,14 @@ public class TurnToAngle extends TimedCommand {
 	@Override
 	protected void interrupted() {
 		Robot.motionController.disable();
-		Robot.drive.setMaxOutput(Robot.drive.maxSpeed);
+		Robot.drive.setMaxOutput(Robot.drive.defSpeed);
 		Robot.drive.arcadeDrive(0, 0);
 	}
 	
 	@Override
 	protected void end() {
 		Robot.motionController.disable();
-		Robot.drive.setMaxOutput(Robot.drive.maxSpeed);
+		Robot.drive.setMaxOutput(Robot.drive.defSpeed);
 		Robot.drive.arcadeDrive(0, 0);
 	}
 }

@@ -24,6 +24,7 @@ import edu.wpi.first.wpilibj.drive.DifferentialDrive;
  * A subsystem for the control of the drivetrain.
  */
 public class Drive extends Subsystem {
+	public final double defSpeed = 0.9;
 	public double maxSpeed = 0.9;
 	
 	/*SpeedController frontLeft = RobotMap.frontLeftEnum.generate(RobotMap.frontLeft);
