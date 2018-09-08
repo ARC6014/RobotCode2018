@@ -7,34 +7,36 @@
 
 package frc.team6014.robot.autonomous.commands;
 
-import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.command.TimedCommand;
 
 import frc.team6014.robot.Robot;
 
-public class DropArm extends Command {
-	
-	private double angle;
-	
-	public DropArm() {
-		requires(Robot.arm);
+public class DropArm extends TimedCommand {
+
+	double speed;
+	public DropArm(double duration, double speed) {
+		super(duration);
+		this.speed = speed;
 	}
 
 	// Called just before this Command runs the first time
 	@Override
 	protected void initialize() {
-		Robot.arm.drop();
-		Robot.arm.enable();
 	}
 
 	// Called repeatedly when this Command is scheduled to run
 	@Override
 	protected void execute() {
-		Robot.arm.hingePID();
-	}
-	
-	@Override
-	protected boolean isFinished() {
-		return Robot.arm.getCurrentAngle() < 20;
+		Robot.arm.setHingeSpeed(speed);
 	}
 
+	@Override
+	protected void interrupted() {
+		Robot.arm.setHingeSpeed(0);
+	}
+
+	@Override
+	protected void end() {
+		Robot.arm.setHingeSpeed(0);
+	}
 }
