@@ -23,7 +23,7 @@ import frc.team6014.robot.autonomous.commands.TurnToAngle;
  */
 public class AutoSwitchDecisionTreeRight extends CommandGroup {
 	public AutoSwitchDecisionTreeRight() {
-		addSequential(new TimedStraightDrive(1.6,-0.8,0));
+		addSequential(new TimedStraightDrive(1.8,-0.8,0));
 		String gameSwitchData = Robot.gameData.substring(0,1);
 		if(gameSwitchData.length() > 0)
         {
@@ -42,9 +42,9 @@ public class AutoSwitchDecisionTreeRight extends CommandGroup {
 				//If first switch at left side
 				addSequential(new TimedStraightDrive(0.8,-0.8,0));
 				addSequential(new TurnToAngle(-90,-0.6,2));
-				addSequential(new TimedStraightDrive(1.6, -0.8,-90));
+				addSequential(new TimedStraightDrive(2.4, -0.8,-90));
 				addSequential(new TurnToAngle(180, -0.6, 2));
-				addSequential(new TimedStraightDrive(1.6, -0.8, 180));
+				addSequential(new TimedStraightDrive(0.6, -0.8, 180));
                 addSequential(new DropArm(0.2,0.5));
                 addSequential(new Launch(0.6));
 			}
