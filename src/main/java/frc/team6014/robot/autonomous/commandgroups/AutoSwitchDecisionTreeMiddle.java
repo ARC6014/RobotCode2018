@@ -28,16 +28,23 @@ public class AutoSwitchDecisionTreeMiddle extends CommandGroup {
 			if(gameSwitchData.equals("R"))
 			{
 				//If first switch and scale are at right side
-				addSequential(new DistanceStraightDrive(2-Robot.robotLength,0.8,0));
-				addSequential(new TurnToAngle(90,0.6,2));
-				addSequential(new DistanceStraightDrive(1.4,0.8,90));
+
+				addSequential(new TimedStraightDrive(0.5,-0.8,0));
+				addSequential(new TurnToAngle(90,-0.6,2));
+				addSequential(new TimedStraightDrive(0.3,-0.8,90));
+				addSequential(new TurnToAngle(0,-0.6,2));
+				addSequential(new TimedStraightDrive(0.3,-0.8,0));
+				addSequential(new Launch(0.6));
 			}
 				else if(gameSwitchData.equals("L"))
 			{
 				//If first switch and scale are at left side
-				addSequential(new DistanceStraightDrive(2-Robot.robotLength,0.8,0));
-				addSequential(new TurnToAngle(-90,0.6,2));
-				addSequential(new DistanceStraightDrive(1.4,0.8,-90));
+				addSequential(new TimedStraightDrive(0.5,-0.8,0));
+				addSequential(new TurnToAngle(-90,-0.6,2));
+				addSequential(new TimedStraightDrive(0.3,-0.8,-90));
+				addSequential(new TurnToAngle(0,-0.6,2));
+				addSequential(new TimedStraightDrive(0.3,-0.8,0));
+				addSequential(new Launch(0.6));
 			}
 			else
 			{

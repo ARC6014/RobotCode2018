@@ -11,10 +11,13 @@ import edu.wpi.first.wpilibj.command.TimedCommand;
 
 import frc.team6014.robot.Robot;
 
-public class DropArm extends TimedCommand {
 
-	public DropArm(double duration) {
+public class LiftArm extends TimedCommand {
+
+	double duration;
+	public LiftArm (double duration) {
 		super(duration);
+		this.duration = duration;
 	}
 
 	// Called just before this Command runs the first time
@@ -25,16 +28,22 @@ public class DropArm extends TimedCommand {
 	// Called repeatedly when this Command is scheduled to run
 	@Override
 	protected void execute() {
-		Robot.arm.setHingeSpeed(0.5);
+		Robot.arm.setHingeSpeed(-0.5);
 	}
-
+	
 	@Override
 	protected void interrupted() {
 		Robot.arm.setHingeSpeed(0);
+		//if (Robot.arm.getCurrentAngle() < 70) { //I gave an aproximate value since ı don't know the real one
+		//	LiftArm(duration+0.3);
+		//}
 	}
-
+	
 	@Override
 	protected void end() {
 		Robot.arm.setHingeSpeed(0);
+		//if (Robot.arm.getCurrentAngle() < 70) {
+		//	LiftArm(duration+0.3);
+		//}
 	}
 }

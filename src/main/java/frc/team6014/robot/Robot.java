@@ -114,7 +114,10 @@ public class Robot extends TimedRobot {
 		// this line or comment it out.
 		if (autonomousCommand != null) {
 			autonomousCommand.cancel();
-		}
+		} //else if (oi.getDriveY() != 0) {
+			//autonomousCommand.cancel();
+		//}
+
 		Teleop.init();
 	}
 
