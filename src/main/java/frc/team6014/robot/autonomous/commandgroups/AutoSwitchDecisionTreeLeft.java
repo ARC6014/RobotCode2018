@@ -32,6 +32,7 @@ public class AutoSwitchDecisionTreeLeft extends CommandGroup {
 			if(gameSwitchData.equals("R"))
 			{
 				//If first switch and scale are at right side
+				//What it does is goes to the right switch and throws the cube, then takes another one and brings it to portal enterance
 
 				//-90 sağ mı sol mu?
 				//Tan ilk otonom denemesinde değere ne vermişti?
@@ -80,6 +81,8 @@ public class AutoSwitchDecisionTreeLeft extends CommandGroup {
 			else if(gameSwitchData.equals("L"))
 			{
 				//If first switch and scale are at left side
+				//What it does is goes to the left switch and throws the cube then takes another one and throws it too
+
 				addSequential(new TurnToAngle(-90,-0.6,2));
 				addSequential(new TimedStraightDrive(0.2,-0.4,0));
 				addSequential(new Launch(0.7));
