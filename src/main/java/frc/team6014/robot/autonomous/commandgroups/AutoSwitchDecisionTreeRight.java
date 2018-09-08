@@ -32,7 +32,8 @@ public class AutoSwitchDecisionTreeRight extends CommandGroup {
 				//If first switch at right side
 				addSequential(new TurnToAngle(-90,-0.6,2));
 				addSequential(new TimedStraightDrive(0.4,-0.8,-90));
-				addSequential(new Launch(0.6));
+                addSequential(new DropArm(0.2,0.5));
+                addSequential(new Launch(0.6));
 				
 			}
 			else if(gameSwitchData.equals("L"))
@@ -43,7 +44,8 @@ public class AutoSwitchDecisionTreeRight extends CommandGroup {
 				addSequential(new TimedStraightDrive(1.6, -0.8,-90));
 				addSequential(new TurnToAngle(180, -0.6, 2));
 				addSequential(new TimedStraightDrive(1.6, -0.8, 180));
-				addSequential(new Launch(0.6));
+                addSequential(new DropArm(0.2,0.5));
+                addSequential(new Launch(0.6));
 			}
 			else
 			{
