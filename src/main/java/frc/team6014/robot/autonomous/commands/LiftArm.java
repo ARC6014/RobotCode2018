@@ -13,9 +13,11 @@ import frc.team6014.robot.Robot;
 
 
 public class LiftArm extends TimedCommand {
-	
+
+	double duration;
 	public LiftArm (double duration) {
 		super(duration);
+		this.duration = duration;
 	}
 
 	// Called just before this Command runs the first time
@@ -33,12 +35,15 @@ public class LiftArm extends TimedCommand {
 	protected void interrupted() {
 		Robot.arm.setHingeSpeed(0);
 		//if (Robot.arm.getCurrentAngle() < 70) { //I gave an aproximate value since ı don't know the real one
-		//	LiftArm(3);
+		//	LiftArm(duration+0.3);
 		//}
 	}
 	
 	@Override
 	protected void end() {
 		Robot.arm.setHingeSpeed(0);
+		//if (Robot.arm.getCurrentAngle() < 70) {
+		//	LiftArm(duration+0.3);
+		//}
 	}
 }
