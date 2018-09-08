@@ -13,10 +13,8 @@ import frc.team6014.robot.Robot;
 
 public class DropArm extends TimedCommand {
 
-	double speed;
-	public DropArm(double duration, double speed) {
+	public DropArm(double duration) {
 		super(duration);
-		this.speed = speed;
 	}
 
 	// Called just before this Command runs the first time
@@ -27,7 +25,7 @@ public class DropArm extends TimedCommand {
 	// Called repeatedly when this Command is scheduled to run
 	@Override
 	protected void execute() {
-		Robot.arm.setHingeSpeed(speed);
+		Robot.arm.setHingeSpeed(0.5);
 	}
 
 	@Override
