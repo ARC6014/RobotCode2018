@@ -30,22 +30,42 @@ public class AutoSwitchDecisionTreeLeft extends CommandGroup {
 			if(gameSwitchData.equals("R"))
 			{
 				//If first switch and scale are at right side
+
+				//-90 sağ mı sol mu?
+				//Tan ilk otonom denemesinde değere ne vermişti?
+
+
 				addSequential(new TimedStraightDrive(2.4,-0.8,0));
-				addSequential(new TurnToAngle(-90,0.6,2));
+				addSequential(new TurnToAngle(-90,-0.6,2));
 				addSequential(new TimedStraightDrive(1.6,-0.8,0));
-				addSequential(new TurnToAngle(-90,0.6,2));
+				addSequential(new TurnToAngle(-90,-0.6,2));
 				addSequential(new TimedStraightDrive(0.15,-0.4,0));
-				addSequential(new Launch(0.6));
+				addSequential(new Launch(0.7));
+				//Önce test et, hassas ayarlamaları yap
 
 
+				//Take the other cube
+				//addSequential(new TimedStraightDrive(0.15,0.4,0));
+				//addSequential(new DropArm(0.5,0.6));
+				//addSequential(new TurnToAngle(-45,-0.6,2));
+				//addSequential(new TimedStraightDrive(0.3,-0.4,0));
+				//addSequential(new Intake(0.6));
 
-				//Taking another box !!should change the data!!
-				//addSequential(new TimedStraightDrive(0.4,0.8,0));
-				//addSequential(new TurnToAngle(-90,0.6,2));
-				//addSequential(new DropArm(0.2,0.5));
-				//addSequential(new TimedStraightDrive(0.4,-0.8,90));
-				//addSequential(new Intake(1));
-				//What it does is drops the first box the takes another one from where our switch is
+
+				//Bringing the cube to portal
+				//addSequential(new DropArm(2,-0.8));
+				//addSequential(new TimedStraightDrive(0.3,0.4,0));
+				//addSequential(new TurnToAngle(90,-0.6,3));
+				//addSequential(new Intake(0.1));
+				//addSequential(new TimedStraightDrive(1.6,-0.8,0));
+				//addSequential(new TurnToAngle(180,-0.6,2));
+				//addSequential(new Intake(0.1));
+				//addSequential(new TimedStraightDrive(1.7,-0.8,0));
+				//addSequential(new TurnToAngle(90,-0.6,2));
+				//addSequential(new TimedStraightDrive(0.7,-0.8,0));
+				//addSequential(new TurnToAngle(-90,-0.6,2));
+				//When it is done robot should be facing the portal
+
 
 
 			}
@@ -53,22 +73,11 @@ public class AutoSwitchDecisionTreeLeft extends CommandGroup {
 			{
 				//If first switch and scale are at left side
 				addSequential(new TimedStraightDrive(1.7,-0.8,0));
-				addSequential(new TurnToAngle(-90,0.6,2));
-				addSequential(new TimedStraightDrive(0.5,-0.4,0));
-				addSequential(new Launch(0.6));
+				addSequential(new TurnToAngle(-90,-0.6,2));
+				addSequential(new TimedStraightDrive(0.2,-0.4,0));
+				addSequential(new Launch(0.7));
 
 
-				//Taking another box !!should change the data!!
-				//addSequential(new TimedStraightDrive(0.4,0.8,90));
-				//addSequential(new TimedStraightDrive(0.5,-0.8,0));
-				//addSequential(new TurnToAngle(0,-0.6,2));
-				//addSequential(new TimedStraightDrive(1.7,-0.8,0));
-				//addSequential(new TurnToAngle(-90,-0.6,2));
-				//addSequential(new TimedStraightDrive(0.5,-0.4,0));
-				//addSequential(new TurnToAngle(-90,-0.6,2));
-				//addSequential(new TimedStraightDrive(0.4,-0.8,90));
-				//addSequential(new Intake(1));
-				//What it does is drops the first box the takes another one from where our switch is
 			}
 			else
 			{
