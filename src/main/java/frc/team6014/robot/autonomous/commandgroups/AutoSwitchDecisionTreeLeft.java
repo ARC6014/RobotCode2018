@@ -24,22 +24,20 @@ import frc.team6014.robot.autonomous.commands.Intake;
  */
 public class AutoSwitchDecisionTreeLeft extends CommandGroup {
 	public AutoSwitchDecisionTreeLeft() {
-		addSequential(new TimedStraightDrive(0.7,-0.8,0));
 		String gameSwitchData = Robot.gameData.substring(0,1);
 		if(gameSwitchData.length() > 0)
-        {
+		{
 			if(gameSwitchData.equals("R"))
 			{
 				//If first switch and scale are at right side
-				addSequential(new TurnToAngle(90,-0.6,2));
-				addSequential(new TimedStraightDrive(0.3,-0.8,0));
-				addSequential(new TurnToAngle(0,-0.6,2));
-				addSequential(new TimedStraightDrive(1,-0.8,0));
-				addSequential(new TurnToAngle(-90,-0.6,2));
-				addSequential(new TimedStraightDrive(1,-0.8,0));
-				addSequential(new TurnToAngle(-90,-0.6,2));
-				addSequential(new TimedStraightDrive(0.15,-0.8,0));
+				addSequential(new TimedStraightDrive(2.4,-0.8,0));
+				addSequential(new TurnToAngle(-90,0.6,2));
+				addSequential(new TimedStraightDrive(1.6,-0.8,0));
+				addSequential(new TurnToAngle(-90,0.6,2));
+				addSequential(new TimedStraightDrive(0.15,-0.4,0));
 				addSequential(new Launch(0.6));
+
+
 
 				//Taking another box !!should change the data!!
 				//addSequential(new TimedStraightDrive(0.4,0.8,0));
@@ -54,9 +52,11 @@ public class AutoSwitchDecisionTreeLeft extends CommandGroup {
 			else if(gameSwitchData.equals("L"))
 			{
 				//If first switch and scale are at left side
-				addSequential(new TurnToAngle(90,-0.6,2));
-				addSequential(new TimedStraightDrive(0.4,-0.8,90));
+				addSequential(new TimedStraightDrive(1.7,-0.8,0));
+				addSequential(new TurnToAngle(-90,0.6,2));
+				addSequential(new TimedStraightDrive(0.5,-0.4,0));
 				addSequential(new Launch(0.6));
+
 
 				//Taking another box !!should change the data!!
 				//addSequential(new TimedStraightDrive(0.4,0.8,90));
