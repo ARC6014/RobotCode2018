@@ -23,7 +23,7 @@ import frc.team6014.robot.autonomous.commands.TurnToAngle;
  */
 public class AutoSwitchDecisionTreeRight extends CommandGroup {
 	public AutoSwitchDecisionTreeRight() {
-		addSequential(new TimedStraightDrive(1.8,-0.8,0));
+		addSequential(new TimedStraightDrive(2.0,0.8,0));
 		String gameSwitchData = Robot.gameData.substring(0,1);
 		if(gameSwitchData.length() > 0)
         {
@@ -31,30 +31,30 @@ public class AutoSwitchDecisionTreeRight extends CommandGroup {
 			{
 				// Is this not good already?
 				//If first switch at right side
-				addSequential(new TurnToAngle(-90,-0.6,2));
-				addSequential(new TimedStraightDrive(0.4,-0.8,-90));
-				addSequential(new DropArm(0.2));
+				addSequential(new TurnToAngle(-90,0.6,1));
+				addSequential(new TimedStraightDrive(0.4,0.6,-90));
+				addSequential(new DropArm(0.3));
                 //addSequential(new DropArm(0.2,0.5));
-                addSequential(new Launch(0.6));
+                addSequential(new Launch(0.5));
 				
 			}
 			else if(gameSwitchData.equals("L"))
 			{
 				//If first switch at left side
-				addSequential(new TimedStraightDrive(0.8,-0.8,0));
-				addSequential(new TurnToAngle(-90,-0.6,2));
-				addSequential(new TimedStraightDrive(2.1, -0.8,-90));
-				addSequential(new TurnToAngle(180, -0.6, 2));
-				addSequential(new TimedStraightDrive(0.6, -0.8, 180));
-				addSequential(new DropArm(0.2));
+				addSequential(new TimedStraightDrive(0.6,0.8,0));
+				addSequential(new TurnToAngle(-90,0.6,1));
+				addSequential(new TimedStraightDrive(2.4, 0.8,-90));
+				addSequential(new TurnToAngle(180, 0.6, 1));
+				addSequential(new TimedStraightDrive(0.6, 0.8, 180));
+				addSequential(new DropArm(0.3));
                 //addSequential(new DropArm(0.2,0.5));
-                addSequential(new Launch(0.6));
+                addSequential(new Launch(0.5));
 			}
 			else
 			{
 				//There's goddamn error m8
 				System.out.println("NO GAME DATA");
-				addSequential(new DistanceStraightDrive(3-Robot.robotLength,0.8,0));
+				addSequential(new TimedStraightDrive(2,0.8,0));
 			}
 		}
 	}

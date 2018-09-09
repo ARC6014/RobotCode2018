@@ -25,7 +25,7 @@ import frc.team6014.robot.autonomous.commands.LiftArm;
  */
 public class AutoSwitchDecisionTreeLeft extends CommandGroup {
 	public AutoSwitchDecisionTreeLeft() {
-		addSequential(new TimedStraightDrive(1.7,-0.8,0));
+		addSequential(new TimedStraightDrive(2.0,0.8,0));
 		String gameSwitchData = Robot.gameData.substring(0,1);
 		if(gameSwitchData.length() > 0)
 		{
@@ -38,12 +38,13 @@ public class AutoSwitchDecisionTreeLeft extends CommandGroup {
 				//Tan ilk otonom denemesinde değere ne vermişti?
 
 
-				addSequential(new TimedStraightDrive(0.7,-0.8,0));
-				addSequential(new TurnToAngle(-90,-0.6,2));
-				addSequential(new TimedStraightDrive(1.6,-0.8,0));
-				addSequential(new TurnToAngle(-90,-0.6,2));
-				addSequential(new TimedStraightDrive(0.15,-0.4,0));
-				addSequential(new Launch(0.7));
+				addSequential(new TimedStraightDrive(0.6,0.8,0));
+				addSequential(new TurnToAngle(90,0.6,1));
+				addSequential(new TimedStraightDrive(2.4,0.8,90));
+				addSequential(new TurnToAngle(180,0.6,1));
+				addSequential(new TimedStraightDrive(0.4, 0.6,180));
+				addSequential(new DropArm(0.3));
+				addSequential(new Launch(0.5));
 				//Test First Do the Adjustments
 
 
@@ -83,9 +84,10 @@ public class AutoSwitchDecisionTreeLeft extends CommandGroup {
 				//If first switch and scale are at left side
 				//What it does is goes to the left switch and throws the cube then takes another one and throws it too
 
-				addSequential(new TurnToAngle(-90,-0.6,2));
-				addSequential(new TimedStraightDrive(0.2,-0.4,0));
-				addSequential(new Launch(0.7));
+				addSequential(new TurnToAngle(90,0.6,1));
+				addSequential(new TimedStraightDrive(0.4,0.6,0));
+				addSequential(new DropArm(0.3));
+				addSequential(new Launch(0.5));
 
 
 				//Take an other cube

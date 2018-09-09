@@ -10,12 +10,7 @@ package frc.team6014.robot.autonomous.commandgroups;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 import frc.team6014.robot.Robot;
-import frc.team6014.robot.autonomous.commands.Delay;
-import frc.team6014.robot.autonomous.commands.DistanceStraightDrive;
-import frc.team6014.robot.autonomous.commands.Launch;
-import frc.team6014.robot.autonomous.commands.RotateArm;
-import frc.team6014.robot.autonomous.commands.TimedStraightDrive;
-import frc.team6014.robot.autonomous.commands.TurnToAngle;
+import frc.team6014.robot.autonomous.commands.*;
 
 /**
  * This commandgroup is responsible for choosing a the set of behaviors of the robot according to the starting position
@@ -29,27 +24,29 @@ public class AutoSwitchDecisionTreeMiddle extends CommandGroup {
 			{
 				//If first switch and scale are at right side
 
-				addSequential(new TimedStraightDrive(0.5,-0.8,0));
-				addSequential(new TurnToAngle(90,-0.6,2));
-				addSequential(new TimedStraightDrive(0.3,-0.8,90));
-				addSequential(new TurnToAngle(0,-0.6,2));
-				addSequential(new TimedStraightDrive(0.3,-0.8,0));
-				addSequential(new Launch(0.6));
+				addSequential(new TimedStraightDrive(0.5,0.8,0));
+				addSequential(new TurnToAngle(90,0.6,1));
+				addSequential(new TimedStraightDrive(0.5,0.8,90));
+				addSequential(new TurnToAngle(0,0.6,1));
+				addSequential(new TimedStraightDrive(0.3,0.6,0));
+				addSequential(new DropArm(0.3));
+				addSequential(new Launch(0.5));
 			}
 				else if(gameSwitchData.equals("L"))
 			{
 				//If first switch and scale are at left side
-				addSequential(new TimedStraightDrive(0.5,-0.8,0));
-				addSequential(new TurnToAngle(-90,-0.6,2));
-				addSequential(new TimedStraightDrive(0.3,-0.8,-90));
-				addSequential(new TurnToAngle(0,-0.6,2));
-				addSequential(new TimedStraightDrive(0.3,-0.8,0));
-				addSequential(new Launch(0.6));
+				addSequential(new TimedStraightDrive(0.5,0.8,0));
+				addSequential(new TurnToAngle(-90,0.6,1));
+				addSequential(new TimedStraightDrive(0.5,0.8,-90));
+				addSequential(new TurnToAngle(0,0.6,1));
+				addSequential(new TimedStraightDrive(0.5,0.6,0));
+				addSequential(new DropArm(0.3));
+				addSequential(new Launch(0.5));
 			}
 			else
 			{
 				//There's goddamn error m8
-				addSequential(new DistanceStraightDrive(3-Robot.robotLength,0.8,0));
+				addSequential(new TimedStraightDrive(2,0.8,0));
 				System.out.println("NO GAME DATA");
 			}
 			
