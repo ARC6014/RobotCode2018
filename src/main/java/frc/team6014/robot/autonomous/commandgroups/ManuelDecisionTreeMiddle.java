@@ -23,8 +23,8 @@ import frc.team6014.robot.autonomous.commands.LiftArm;
 /**
  * This commandgroup is responsible for choosing a the set of behaviors of the robot according to the starting position
  */
-public class AutoSwitchDecisionTreeLeft extends CommandGroup {
-	public AutoSwitchDecisionTreeLeft() {
+public class ManuelDecisionTreeMiddle extends CommandGroup {
+	public ManuelDecisionTreeMiddle() {
 		addSequential(new TimedStraightDrive(2.0,0.8,0));
 		String newGameData = "LLL";
 		String gameSwitchData = newGameData.substring(0,1);
